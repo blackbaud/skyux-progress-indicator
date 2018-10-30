@@ -1,7 +1,7 @@
 {
-  "name": "@skyux/sample",
-  "version": "3.0.0-alpha.x",
-  "description": "SKY UX Sample",
+  "name": "@skyux/progress-indicator",
+  "version": "3.0.0-alpha.0",
+  "description": "SKY UX Progress Indicator",
   "main": "bundles/bundle.umd.js",
   "module": "index.ts",
   "scripts": {
@@ -16,13 +16,19 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/blackbaud/skyux-sample.git"
+    "url": "git+https://github.com/blackbaud/skyux-progress-indicator.git"
   },
   "bugs": {
-    "url": "https://github.com/blackbaud/skyux-sample/issues"
+    "url": "https://github.com/blackbaud/skyux-progress-indicator/issues"
   },
-  "homepage": "https://github.com/blackbaud/skyux-sample#readme",
-  "peerDependencies": {},
+  "homepage": "https://github.com/blackbaud/skyux-progress-indicator#readme",
+  "peerDependencies": {
+    "@angular/common": "^4.3.6",
+    "@angular/core": "^4.3.6",
+    "@skyux/core": "^3.1.0",
+    "@skyux/i18n": "^3.2.0",
+    "@skyux/theme": "^3.1.0"
+  },
   "dependencies": {},
   "devDependencies": {
     "@angular/animations": "4.3.6",
@@ -38,6 +44,10 @@
     "@blackbaud/skyux": "2.27.2",
     "@blackbaud/skyux-builder": "1.26.1",
     "@skyux-sdk/builder-plugin-skyux": "1.0.0-rc.0",
+    "@skyux/forms": "3.0.0-rc.1",
+    "@skyux/i18n": "3.2.0",
+    "@skyux/modals": "3.0.0-rc.1",
+    "@skyux/popovers": "3.0.0-rc.1",
     "core-js": "2.4.1",
     "rxjs": "5.4.3",
     "ts-node": "3.0.4",
