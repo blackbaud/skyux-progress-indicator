@@ -43,7 +43,7 @@
     "@angular/router": "4.3.6",
     "@blackbaud/skyux": "2.27.2",
     "@blackbaud/skyux-builder": "1.26.1",
-    "@skyux-sdk/builder-plugin-skyux": "1.0.0-rc.0",
+    "@skyux-sdk/builder-plugin-skyux": "1.0.0-rc.3",
     "@skyux/forms": "3.0.0-rc.1",
     "@skyux/i18n": "3.2.0",
     "@skyux/modals": "3.0.0-rc.1",
