@@ -354,13 +354,11 @@ describe('Progress indicator component', function () {
     }));
 
     it('should default button text for each button type', fakeAsync(() => {
-      fixture.componentInstance.previousButtonText = undefined;
-      fixture.componentInstance.nextButtonText = undefined;
       fixture.detectChanges();
       tick();
 
-      expect(fixture.componentInstance.navButtons.first.buttonText).toBe('Previous');
-      expect(fixture.componentInstance.navButtons.last.buttonText).toBe('Next');
+      expect(fixture.nativeElement.querySelector('#previous-btn button').innerText).toBe('Previous');
+      expect(fixture.nativeElement.querySelector('#next-btn button').innerText).toBe('Next');
     }));
 
     it('should use inputted disabled state', fakeAsync(() => {
