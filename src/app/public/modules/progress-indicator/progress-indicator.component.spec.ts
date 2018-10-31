@@ -357,8 +357,8 @@ describe('Progress indicator component', function () {
       fixture.detectChanges();
       tick();
 
-      expect(fixture.nativeElement.querySelector('#previous-btn button').innerText).toBe('Previous');
-      expect(fixture.nativeElement.querySelector('#next-btn button').innerText).toBe('Next');
+      expect(fixture.nativeElement.querySelector('#previous-btn button').innerText.trim()).toBe('Previous');
+      expect(fixture.nativeElement.querySelector('#next-btn button').innerText.trim()).toBe('Next');
     }));
 
     it('should use inputted disabled state', fakeAsync(() => {
