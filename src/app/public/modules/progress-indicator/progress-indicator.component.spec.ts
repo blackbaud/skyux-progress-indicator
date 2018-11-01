@@ -2,7 +2,8 @@ import {
   fakeAsync,
   TestBed,
   ComponentFixture,
-  tick
+  tick,
+  async
 } from '@angular/core/testing';
 
 import {
@@ -14,12 +15,18 @@ import {
 } from '@skyux/i18n/testing';
 
 import {
+  expect
+} from '@skyux-sdk/testing';
+
+import {
   SkyProgressIndicatorModule,
   SkyProgressIndicatorMessageType
 } from '.';
+
 import {
   ProgressIndicatorTestComponent
 } from './fixtures/progress-indicator.component.fixture';
+
 import {
   SkyProgressIndicatorDisplayMode
 } from './types/progress-indicator-mode';
@@ -379,6 +386,13 @@ describe('Progress indicator component', function () {
 
       expect(fixture.componentInstance.resetButton.disabled).toBeTruthy();
       expect(resetButton.disabled).toBeTruthy();
+    }));
+
+    it('should be accessible', async(() => {
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        expect(fixture.nativeElement).toBeAccessible();
+      });
     }));
   });
 });
