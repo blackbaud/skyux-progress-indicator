@@ -394,5 +394,23 @@ describe('Progress indicator component', function () {
         expect(fixture.nativeElement).toBeAccessible();
       });
     }));
+
+    it('should be accessible in passive mode', async(() => {
+      fixture.componentInstance.isPassive = true;
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        expect(fixture.nativeElement).toBeAccessible();
+      });
+    }));
+
+    it('should be accessible with disabled buttons', async(() => {
+      fixture.componentInstance.previousButtonDisabled = true;
+      fixture.componentInstance.nextButtonDisabled = true;
+      fixture.componentInstance.resetButtonDisabled = true;
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        expect(fixture.nativeElement).toBeAccessible();
+      });
+    }));
   });
 });
