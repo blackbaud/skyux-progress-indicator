@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/@skyux/config/skyuxconfig-schema.json",
-  "name": "skyux-sample",
+  "name": "skyux-progress-indicator",
   "mode": "easy",
   "compileMode": "aot",
   "skyuxModules": [
