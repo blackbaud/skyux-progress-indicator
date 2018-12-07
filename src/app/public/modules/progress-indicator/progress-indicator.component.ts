@@ -114,8 +114,10 @@ export class SkyProgressIndicatorComponent implements AfterContentInit, OnDestro
         firstItem.isActive = true;
       }
     }
-    this.progressChanges.emit({
-      activeIndex: this.activeIndex
+    setTimeout(() => {
+      this.progressChanges.emit({
+        activeIndex: this.activeIndex
+      });
     });
 
     // Set the last item
