@@ -30,6 +30,7 @@ import {
 import {
   SkyProgressIndicatorDisplayMode
 } from './types/progress-indicator-mode';
+import { SkyWindowRefService } from '@skyux/core';
 
 describe('Progress indicator component', function () {
 
@@ -45,6 +46,7 @@ describe('Progress indicator component', function () {
         ProgressIndicatorTestComponent
       ],
       providers: [
+        SkyWindowRefService,
         {
           provide: SkyLibResourcesService,
           useClass: SkyLibResourcesTestService

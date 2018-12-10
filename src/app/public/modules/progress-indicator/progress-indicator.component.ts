@@ -6,7 +6,8 @@ import {
   Input,
   OnDestroy,
   Output,
-  QueryList
+  QueryList,
+  Optional
 } from '@angular/core';
 
 import {
@@ -71,7 +72,7 @@ export class SkyProgressIndicatorComponent implements AfterContentInit, OnDestro
   private ngUnsubscribe = new Subject();
 
   constructor(
-    private windowSvc: SkyWindowRefService
+    @Optional() private windowSvc: SkyWindowRefService
   ) {}
 
   public ngAfterContentInit(): void {
