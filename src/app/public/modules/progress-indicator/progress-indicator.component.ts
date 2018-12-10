@@ -23,6 +23,7 @@ import {
 import {
   SkyProgressIndicatorDisplayMode
 } from './types/progress-indicator-mode';
+import { SkyWindowRefService } from '@skyux/core';
 
 @Component({
   selector: 'sky-progress-indicator',
@@ -68,6 +69,10 @@ export class SkyProgressIndicatorComponent implements AfterContentInit, OnDestro
   private _displayMode: SkyProgressIndicatorDisplayMode;
   private _isPassive: boolean;
   private ngUnsubscribe = new Subject();
+
+  constructor(
+    private windowSvc: SkyWindowRefService
+  ) {}
 
   public ngAfterContentInit(): void {
     // Set up observation of progress command messages
@@ -116,7 +121,7 @@ export class SkyProgressIndicatorComponent implements AfterContentInit, OnDestro
     }
 
     // setTimeout required to ensure listeners aren't triggered until the view lifecycle has completed. Issue: blackbaud/skyux2#2221
-    setTimeout(() => {
+    this.windowSvc.getWindow().setTimeout(() => {
       this.progressChanges.emit({
         activeIndex: this.activeIndex
       });
