@@ -5,9 +5,9 @@ import {
   EventEmitter,
   Input,
   OnDestroy,
+  Optional,
   Output,
-  QueryList,
-  Optional
+  QueryList
 } from '@angular/core';
 
 import {
@@ -15,16 +15,21 @@ import {
 } from 'rxjs/Subject';
 
 import {
+  SkyWindowRefService
+} from '@skyux/core';
+
+import {
   SkyProgressIndicatorChange,
   SkyProgressIndicatorMessageType
 } from './types';
+
 import {
   SkyProgressIndicatorItemComponent
 } from './progress-indicator-item';
+
 import {
   SkyProgressIndicatorDisplayMode
 } from './types/progress-indicator-mode';
-import { SkyWindowRefService } from '@skyux/core';
 
 @Component({
   selector: 'sky-progress-indicator',
@@ -72,7 +77,7 @@ export class SkyProgressIndicatorComponent implements AfterContentInit, OnDestro
   private ngUnsubscribe = new Subject();
 
   constructor(
-    @Optional() private windowSvc: SkyWindowRefService
+    @Optional() private windowService: SkyWindowRefService
   ) {}
 
   public ngAfterContentInit(): void {
@@ -121,8 +126,9 @@ export class SkyProgressIndicatorComponent implements AfterContentInit, OnDestro
       }
     }
 
-    // setTimeout required to ensure listeners aren't triggered until the view lifecycle has completed. Issue: blackbaud/skyux2#2221
-    this.windowSvc.getWindow().setTimeout(() => {
+    // A timeout is needed to ensure that subscriptions are executed after all Angular lifecycle hooks have completed.
+    // For example, if a subscriber executed `detectChanges`, it would short-circuit any remaining lifecycle hooks.
+    this.windowService.getWindow().setTimeout(() => {
       this.progressChanges.emit({
         activeIndex: this.activeIndex
       });
