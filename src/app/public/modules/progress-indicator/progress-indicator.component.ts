@@ -114,9 +114,8 @@ export class SkyProgressIndicatorComponent implements AfterContentInit, OnDestro
         firstItem.isActive = true;
       }
     }
-    
-    // setTimeout required to allow other ngAfterViewContentInit's of
-    // parent components to execute before this event triggers. Issue: blackbaud/skyux2#2221
+
+    // setTimeout required to ensure listeners aren't triggered until the view lifecycle has completed. Issue: blackbaud/skyux2#2221
     setTimeout(() => {
       this.progressChanges.emit({
         activeIndex: this.activeIndex
