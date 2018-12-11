@@ -30,7 +30,7 @@
   "dependencies": {},
   "devDependencies": {
     "@blackbaud/skyux": "2.28.3",
-    "@blackbaud/skyux-builder": "1.29.0",
+    "@blackbaud/skyux-builder": "blackbaud/skyux-builder#upgrade-protractor",
     "@skyux-sdk/builder-plugin-skyux": "1.0.0-rc.5"
   }
 }
