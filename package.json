@@ -1,6 +1,6 @@
 {
   "name": "@skyux/progress-indicator",
-  "version": "3.0.0-rc.1",
+  "version": "3.0.0",
   "description": "SKY UX Progress Indicator",
   "main": "bundles/bundle.umd.js",
   "module": "index.ts",
@@ -25,11 +25,11 @@
   "peerDependencies": {
     "@angular/common": ">=4.3.6",
     "@angular/core": ">=4.3.6",
-    "@skyux/i18n": "^3.3.0"
+    "@skyux/i18n": "^3.5.0"
   },
   "dependencies": {},
   "devDependencies": {
-    "@blackbaud/skyux": "2.32.0",
+    "@blackbaud/skyux": "2.38.0",
     "@blackbaud/skyux-builder": "1.30.0",
     "@skyux-sdk/builder-plugin-skyux": "1.0.0-rc.5"
   }
