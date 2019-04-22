@@ -99,6 +99,29 @@ describe('Progress indicator', function () {
         screenshotName: 'progress-indicator-passive-xs'
       });
     });
+
+    it('should match previous popover screenshot', function (done) {
+      expect(`#${screenshotElementId}`).toMatchBaselineScreenshot(done, {
+        screenshotName: 'progress-indicator-passive'
+      });
+    });
+  });
+
+  describe('Passive mode (popover)', function () {
+    const screenshotElementId = 'app-screenshot-passive-mode-popover';
+
+    beforeEach(function () {
+      SkyHostBrowser.moveCursorOffScreen();
+      SkyHostBrowser.scrollTo(`#${screenshotElementId}`);
+
+      performClick(`#${screenshotElementId}-button`);
+    });
+
+    it('should match previous screenshot', function (done) {
+      expect(`#${screenshotElementId}-target .sky-popover`).toMatchBaselineScreenshot(done, {
+        screenshotName: 'progress-indicator-passive-popover'
+      });
+    });
   });
 
   describe('Horizontal mode (modal)', function () {

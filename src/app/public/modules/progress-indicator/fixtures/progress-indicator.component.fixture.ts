@@ -56,10 +56,10 @@ export class SkyProgressIndicatorFixtureComponent {
   public resetButtonComponentLegacy: SkyProgressIndicatorResetButtonComponent;
 
   @ViewChild('legacyResetButton', { read: ElementRef })
-  public legacyResetButton: ElementRef<any>;
+  public legacyResetButton: ElementRef;
 
   @ViewChild('legacyIsolatedResetButton', { read: ElementRef })
-  public legacyIsolatedResetButton: ElementRef<any>;
+  public legacyIsolatedResetButton: ElementRef;
 
   @ViewChild('defaultNavButton', { read: SkyProgressIndicatorNavButtonComponent })
   public defaultNavButtonComponent: SkyProgressIndicatorNavButtonComponent;

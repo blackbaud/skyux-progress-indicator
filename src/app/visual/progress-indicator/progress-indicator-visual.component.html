@@ -268,9 +268,13 @@
   Passive mode (in popover)
 </h2>
 
-<div class="app-screenshot">
+<div
+  class="app-screenshot"
+  id="app-screenshot-passive-mode-popover"
+>
   <button
     class="sky-btn sky-btn-link"
+    id="app-screenshot-passive-mode-popover-button"
     type="button"
     [skyPopover]="myPopover"
     skyPopoverPlacement="right"
@@ -279,6 +283,7 @@
   </button>
 
   <sky-popover
+    id="app-screenshot-passive-mode-popover-target"
     #myPopover
   >
     <sky-progress-indicator
