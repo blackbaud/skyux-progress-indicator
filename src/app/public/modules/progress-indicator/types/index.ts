@@ -1,3 +1,6 @@
-export { SkyProgressIndicatorChange } from './progress-indicator-change';
-export { SkyProgressIndicatorMessageType } from './progress-indicator-message-type';
-export { SkyProgressIndicatorDisplayMode } from './progress-indicator-mode';
+export * from './progress-indicator-change';
+export * from './progress-indicator-display-mode';
+export * from './progress-indicator-item-status';
+export * from './progress-indicator-message-type';
+export * from './progress-indicator-message';
+export * from './progress-indicator-nav-button-type';

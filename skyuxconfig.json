@@ -3,6 +3,11 @@
   "name": "skyux-progress-indicator",
   "mode": "easy",
   "compileMode": "aot",
+  "app": {
+    "styles": [
+      "src/app/visual-styles.scss"
+    ]
+  },
   "skyuxModules": [
     "SkyErrorModule"
   ],

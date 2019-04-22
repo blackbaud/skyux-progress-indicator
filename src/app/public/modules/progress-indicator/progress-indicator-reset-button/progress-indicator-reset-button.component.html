@@ -1,7 +1,12 @@
-<button
-  class="sky-btn sky-btn-link"
-  type="button"
-  [disabled]="disabled"
-  (click)="resetProgress()">
-  <ng-content></ng-content>
-</button>
+<div
+  class="sky-progress-indicator-reset-button"
+>
+  <button
+    class="sky-btn sky-btn-link"
+    type="button"
+    [disabled]="disabled"
+    (click)="onClick()"
+  >
+    <ng-content></ng-content>
+  </button>
+</div>

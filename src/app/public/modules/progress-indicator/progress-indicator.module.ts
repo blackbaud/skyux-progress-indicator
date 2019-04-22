@@ -1,53 +1,76 @@
 import {
   NgModule
 } from '@angular/core';
+
 import {
   CommonModule
 } from '@angular/common';
+
+import {
+  SkyAppWindowRef
+} from '@skyux/core';
 
 import {
   SkyI18nModule
 } from '@skyux/i18n';
 
 import {
-  SkyProgressIndicatorResourcesModule
-} from '../shared';
+  SkyIconModule
+} from '@skyux/indicators';
 
 import {
-  SkyProgressIndicatorItemComponent
-} from './progress-indicator-item';
+  SkyProgressIndicatorResourcesModule
+} from '../shared/progress-indicator-resources.module';
+
 import {
   SkyProgressIndicatorComponent
 } from './progress-indicator.component';
+
+import {
+  SkyProgressIndicatorItemComponent
+} from './progress-indicator-item/progress-indicator-item.component';
+
 import {
   SkyProgressIndicatorNavButtonComponent
-} from './progress-indicator-nav-button';
+} from './progress-indicator-nav-button/progress-indicator-nav-button.component';
+
 import {
   SkyProgressIndicatorResetButtonComponent
-} from './progress-indicator-reset-button';
+} from './progress-indicator-reset-button/progress-indicator-reset-button.component';
+
+import {
+  SkyProgressIndicatorStatusMarkerComponent
+} from './progress-indicator-status-marker/progress-indicator-status-marker.component';
+
 import {
   SkyProgressIndicatorTitleComponent
-} from './progress-indicator-title';
+} from './progress-indicator-title/progress-indicator-title.component';
 
 @NgModule({
   declarations: [
-    SkyProgressIndicatorItemComponent,
     SkyProgressIndicatorComponent,
+    SkyProgressIndicatorItemComponent,
     SkyProgressIndicatorNavButtonComponent,
     SkyProgressIndicatorResetButtonComponent,
+    SkyProgressIndicatorStatusMarkerComponent,
     SkyProgressIndicatorTitleComponent
   ],
   imports: [
-    SkyI18nModule,
     CommonModule,
+    SkyI18nModule,
+    SkyIconModule,
     SkyProgressIndicatorResourcesModule
   ],
   exports: [
-    SkyProgressIndicatorItemComponent,
     SkyProgressIndicatorComponent,
+    SkyProgressIndicatorItemComponent,
     SkyProgressIndicatorNavButtonComponent,
     SkyProgressIndicatorResetButtonComponent,
+    SkyProgressIndicatorStatusMarkerComponent,
     SkyProgressIndicatorTitleComponent
+  ],
+  providers: [
+    SkyAppWindowRef
   ]
 })
 export class SkyProgressIndicatorModule { }
