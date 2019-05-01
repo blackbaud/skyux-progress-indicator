@@ -283,7 +283,7 @@ export class SkyProgressIndicatorComponent implements OnInit, AfterContentInit, 
     // Prints a deprecation warning if the consumer provides only `SkyProgressIndicatorMessageType`.
     if (value.type === undefined) {
       console.warn(
-        'The progress indicator component\'s `messageStream` input was ' +
+        '[Deprecation warning] The progress indicator component\'s `messageStream` input was ' +
         'set to `Subject<SkyProgressIndicatorMessageType>`. This is a ' +
         'deprecated type and will be removed in the next major version release. ' +
         'Instead, set the `messageStream` input to `Subject<SkyProgressIndicatorMessage>`.'
@@ -317,7 +317,13 @@ export class SkyProgressIndicatorComponent implements OnInit, AfterContentInit, 
           value.data.activeIndex === undefined
         ) {
           console.warn(
-            'Please provide a step index to travel to!'
+            'A message type of `SkyProgressIndicatorMessageType.GoTo` was passed to the progress ' +
+            'indicator, but no step index was provided. You can pass the desired active ' +
+            'index via:\n' +
+            '{\n' +
+            '  type: SkyProgressIndicatorMessageType.GoTo,\n' +
+            '  data: { activeIndex: 0 }\n' +
+            '}'
           );
           return;
         }
