@@ -254,6 +254,15 @@ describe('Progress indicator component', function () {
       expect(componentInstance.progressItems.last.isComplete).toBeFalsy();
       expect(componentInstance.progressItems.last.isActive).toBeFalsy();
     });
+
+    it('should throw an error when an unknown message is passed', () => {
+      try {
+        componentInstance.sendMessage(4);
+        fail('Should have thrown an exception.');
+      } catch (e) {
+        expect(e).toBe('SkyProgressIndicatorMessageType unrecognized.');
+      }
+    });
   });
 
   describe('progress indicator nav buttons', () => {

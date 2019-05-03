@@ -281,7 +281,7 @@ export class SkyProgressIndicatorComponent implements OnInit, AfterContentInit, 
         break;
 
       default:
-        break;
+        throw 'SkyProgressIndicatorMessageType unrecognized.';
     }
 
     this.changeDetector.markForCheck();
