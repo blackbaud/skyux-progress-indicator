@@ -75,6 +75,7 @@ export class SkyProgressIndicatorComponent implements OnInit, AfterContentInit, 
   public set messageStream(
     value: Subject<SkyProgressIndicatorMessage | SkyProgressIndicatorMessageType>
   ) {
+    /* istanbul ignore else */
     if (value) {
       this._messageStream = value;
     }
@@ -148,6 +149,8 @@ export class SkyProgressIndicatorComponent implements OnInit, AfterContentInit, 
       });
     } else {
       const firstItem = this.getItemByIndex(this.activeIndex);
+
+      /* istanbul ignore else */
       if (firstItem) {
         firstItem.isActive = true;
       }
@@ -188,36 +191,46 @@ export class SkyProgressIndicatorComponent implements OnInit, AfterContentInit, 
   }
 
   private progress(): void {
+    /* istanbul ignore next */
     if (this.activeIndex === this.progressItems.length) {
       return;
     }
+
     const completedItem = this.getItemByIndex(this.activeIndex);
 
     this.activeIndex += 1;
     const activeItem = this.getItemByIndex(this.activeIndex);
 
+    /* istanbul ignore else */
     if (completedItem) {
       completedItem.isActive = false;
       completedItem.isComplete = true;
       completedItem.isNextToInactive = false;
     }
+
+    /* istanbul ignore else */
     if (activeItem) {
       activeItem.isActive = true;
     }
   }
 
   private regress(): void {
+    /* istanbul ignore else */
     if (this.activeIndex === 0) {
       return;
     }
+
     const inactiveItem = this.getItemByIndex(this.activeIndex);
 
     this.activeIndex -= 1;
     const activeItem = this.getItemByIndex(this.activeIndex);
 
+    /* istanbul ignore else */
     if (inactiveItem) {
       inactiveItem.isActive = false;
     }
+
+    /* istanbul ignore else */
     if (activeItem) {
       activeItem.isActive = true;
 
@@ -235,6 +248,8 @@ export class SkyProgressIndicatorComponent implements OnInit, AfterContentInit, 
       item.isNextToInactive = true;
     });
     const firstItem = this.getItemByIndex(this.activeIndex);
+
+    /* istanbul ignore else */
     if (firstItem) {
       firstItem.isActive = true;
     }
