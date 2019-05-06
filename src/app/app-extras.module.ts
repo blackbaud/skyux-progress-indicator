@@ -11,10 +11,6 @@ import {
 } from '@skyux/popovers';
 
 import {
-  SkyAppLinkModule
-} from '@skyux/router';
-
-import {
   SkyProgressIndicatorModule
 } from './public';
 
@@ -24,7 +20,6 @@ import {
 
 @NgModule({
   exports: [
-    SkyAppLinkModule,
     SkyModalModule,
     SkyPopoverModule,
     SkyProgressIndicatorModule

@@ -1,15 +1,14 @@
 import {
   AfterContentInit,
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   ContentChildren,
-  EventEmitter,
   Input,
-  OnDestroy,
   OnInit,
+  OnDestroy,
   Output,
-  QueryList
+  QueryList,
+  ChangeDetectorRef
 } from '@angular/core';
 
 import {
@@ -86,7 +85,7 @@ export class SkyProgressIndicatorComponent implements OnInit, AfterContentInit, 
   }
 
   @Output()
-  public progressChanges = new EventEmitter<SkyProgressIndicatorChange>();
+  public progressChanges = new Subject<SkyProgressIndicatorChange>();
 
   public get cssClassNames(): string {
     const classNames = [
@@ -276,9 +275,7 @@ export class SkyProgressIndicatorComponent implements OnInit, AfterContentInit, 
     });
   }
 
-  private handleIncomingMessage(
-    message: SkyProgressIndicatorMessage | SkyProgressIndicatorMessageType
-  ): void {
+  private handleIncomingMessage(message: SkyProgressIndicatorMessage | SkyProgressIndicatorMessageType): void {
     const value: any = message;
 
     let type: SkyProgressIndicatorMessageType;
