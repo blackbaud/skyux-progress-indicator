@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   ContentChildren,
+  EventEmitter,
   Input,
   OnInit,
   OnDestroy,
@@ -69,7 +70,9 @@ export class SkyProgressIndicatorComponent implements OnInit, AfterContentInit, 
   }
 
   @Input()
-  public set messageStream(value: Subject<SkyProgressIndicatorMessage | SkyProgressIndicatorMessageType>) {
+  public set messageStream(
+    value: Subject<SkyProgressIndicatorMessage | SkyProgressIndicatorMessageType>
+  ) {
     if (value) {
       this._messageStream = value;
     }
@@ -85,7 +88,7 @@ export class SkyProgressIndicatorComponent implements OnInit, AfterContentInit, 
   }
 
   @Output()
-  public progressChanges = new Subject<SkyProgressIndicatorChange>();
+  public progressChanges = new EventEmitter<SkyProgressIndicatorChange>();
 
   public get cssClassNames(): string {
     const classNames = [
@@ -138,15 +141,15 @@ export class SkyProgressIndicatorComponent implements OnInit, AfterContentInit, 
   private set activeIndex(value: number) {
     const lastIndex = this.itemComponents.length - 1;
 
+    let newIndex = value;
+
     if (value > lastIndex) {
-      value = lastIndex;
+      newIndex = lastIndex;
+    } else if (value < 0) {
+      newIndex = 0;
     }
 
-    if (value < 0) {
-      value = 0;
-    }
-
-    this._activeIndex = value;
+    this._activeIndex = newIndex;
   }
 
   private ngUnsubscribe = new Subject<void>();
@@ -275,7 +278,9 @@ export class SkyProgressIndicatorComponent implements OnInit, AfterContentInit, 
     });
   }
 
-  private handleIncomingMessage(message: SkyProgressIndicatorMessage | SkyProgressIndicatorMessageType): void {
+  private handleIncomingMessage(
+    message: SkyProgressIndicatorMessage | SkyProgressIndicatorMessageType
+  ): void {
     const value: any = message;
 
     let type: SkyProgressIndicatorMessageType;
@@ -283,10 +288,10 @@ export class SkyProgressIndicatorComponent implements OnInit, AfterContentInit, 
     // Prints a deprecation warning if the consumer provides only `SkyProgressIndicatorMessageType`.
     if (value.type === undefined) {
       console.warn(
-        '[Deprecation warning] The progress indicator component\'s `messageStream` input was ' +
-        'set to `Subject<SkyProgressIndicatorMessageType>`. This is a ' +
-        'deprecated type and will be removed in the next major version release. ' +
-        'Instead, set the `messageStream` input to `Subject<SkyProgressIndicatorMessage>`.'
+        '[Deprecation warning] The progress indicator component\'s `messageStream` input is set ' +
+        'to `Subject<SkyProgressIndicatorMessageType>`. We will remove this deprecated type in ' +
+        'the next major version release. Instead, set the `messageStream` input to a value of ' +
+        '`Subject<SkyProgressIndicatorMessage>`.'
       );
 
       type = value;
@@ -295,16 +300,16 @@ export class SkyProgressIndicatorComponent implements OnInit, AfterContentInit, 
     }
 
     switch (type) {
-      case SkyProgressIndicatorMessageType.Finish:
-        this.finishSteps();
-        break;
-
       case SkyProgressIndicatorMessageType.Progress:
         this.gotoNextStep();
         break;
 
       case SkyProgressIndicatorMessageType.Regress:
         this.gotoPreviousStep();
+        break;
+
+      case SkyProgressIndicatorMessageType.Finish:
+        this.finishSteps();
         break;
 
       case SkyProgressIndicatorMessageType.Reset:
