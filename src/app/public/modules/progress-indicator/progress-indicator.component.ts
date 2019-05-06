@@ -103,15 +103,15 @@ export class SkyProgressIndicatorComponent implements OnInit, AfterContentInit, 
   private set activeIndex(value: number) {
     const lastIndex = this.progressItems.length - 1;
 
+    let newIndex = value;
+
     if (value > lastIndex) {
-      value = lastIndex;
+      newIndex = lastIndex;
+    } else if (value < 0) {
+      newIndex = 0;
     }
 
-    if (value < 0) {
-      value = 0;
-    }
-
-    this._activeIndex = value;
+    this._activeIndex = newIndex;
   }
 
   private ngUnsubscribe = new Subject();
@@ -271,10 +271,10 @@ export class SkyProgressIndicatorComponent implements OnInit, AfterContentInit, 
     // Prints a deprecation warning if the consumer provides only `SkyProgressIndicatorMessageType`.
     if (value.type === undefined) {
       console.warn(
-        '[Deprecation warning] The progress indicator component\'s `messageStream` input was ' +
-        'set to `Subject<SkyProgressIndicatorMessageType>`. This is a ' +
-        'deprecated type and will be removed in the next major version release. ' +
-        'Instead, set the `messageStream` input to `Subject<SkyProgressIndicatorMessage>`.'
+        '[Deprecation warning] The progress indicator component\'s `messageStream` input is set ' +
+        'to `Subject<SkyProgressIndicatorMessageType>`. We will remove this deprecated type in ' +
+        'the next major version release. Instead, set the `messageStream` input to a value of ' +
+        '`Subject<SkyProgressIndicatorMessage>`.'
       );
 
       type = value;
