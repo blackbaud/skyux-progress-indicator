@@ -1,4 +1,4 @@
-export const enum SkyProgressIndicatorItemStatus {
+export enum SkyProgressIndicatorItemStatus {
   Active = 0,
   Complete,
   Incomplete,

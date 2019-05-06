@@ -1,4 +1,4 @@
-export const enum SkyProgressIndicatorDisplayMode {
-  Horizontal = 0,
-  Vertical
+export enum SkyProgressIndicatorDisplayMode {
+  Vertical = 0,
+  Horizontal
 }
