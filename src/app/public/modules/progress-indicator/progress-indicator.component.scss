@@ -22,7 +22,7 @@
    * Overwrite item styles for vertical display mode.
    */
   ::ng-deep {
-    .sky-progress-indicator-item-content {
+    .sky-progress-indicator-item-body {
       text-align: center;
 
       // Accommodate the width of the status marker to make the content centered.
@@ -30,7 +30,7 @@
     }
 
     sky-progress-indicator-nav-button,
-    .sky-progress-indicator-reset-button {
+    sky-progress-indicator-reset-button {
       display: block;
       padding-top: $sky-padding-triple;
       padding-left: $sky-margin-plus-half;
@@ -43,14 +43,14 @@
    * Overwrite item styles for vertical display mode.
    */
   ::ng-deep {
-    .sky-progress-indicator-item-title {
+    .sky-progress-indicator-item-heading {
       font-weight: 600;
       font-size: 16px;
     }
   }
 }
 
-.sky-progress-indicator-status-markers {
+.sky-progress-indicator-horizontal-status-markers {
   display: flex;
   margin-bottom: $sky-margin;
 

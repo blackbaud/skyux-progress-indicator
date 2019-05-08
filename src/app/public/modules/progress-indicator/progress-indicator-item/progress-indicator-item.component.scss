@@ -7,11 +7,11 @@
   margin-bottom: -$icon-offset;
 }
 
-.sky-progress-indicator-item-main {
+.sky-progress-indicator-item-content {
   flex: 1 1 100%;
 }
 
-.sky-progress-indicator-item-content {
+.sky-progress-indicator-item-body {
   min-height: $sky-margin-double;
   padding-top: $sky-margin;
   padding-bottom: $sky-margin-triple;
@@ -19,7 +19,7 @@
 
 .sky-progress-indicator-item-status-incomplete {
   // Incomplete items should have reduced height.
-  .sky-progress-indicator-item-content {
+  .sky-progress-indicator-item-body {
     padding: 0;
   }
 }

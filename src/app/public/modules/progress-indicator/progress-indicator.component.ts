@@ -226,7 +226,7 @@ export class SkyProgressIndicatorComponent implements OnInit, AfterContentInit, 
     });
 
     this.notifyChange({
-      isFinished: true
+      isComplete: true
     });
   }
 

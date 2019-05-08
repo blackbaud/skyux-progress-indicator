@@ -20,7 +20,16 @@ export class SkyProgressIndicatorItemComponent {
   @Input()
   public title: string;
 
+  public get formattedTitle(): string {
+    return `${this.titlePrefix}${this.title}`;
+  }
+
   public get status(): SkyProgressIndicatorItemStatus {
+    /* istanbul ignore next */
+    if (this._status === undefined) {
+      return SkyProgressIndicatorItemStatus.Incomplete;
+    }
+
     return this._status;
   }
 
@@ -61,7 +70,8 @@ export class SkyProgressIndicatorItemComponent {
   public isVisible = false;
   public showStatusMarker = true;
   public showTitle = true;
-  public titlePrefix: string;
+
+  private titlePrefix: string;
 
   private _status: SkyProgressIndicatorItemStatus;
 

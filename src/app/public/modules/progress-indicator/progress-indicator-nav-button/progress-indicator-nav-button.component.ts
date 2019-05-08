@@ -207,7 +207,7 @@ export class SkyProgressIndicatorNavButtonComponent implements OnInit, OnDestroy
     // (except for the reset button)
     if (
       buttonType !== 'reset' &&
-      change.isFinished
+      change.isComplete
     ) {
       this.isVisible = false;
       return;

@@ -6,7 +6,7 @@ export interface SkyProgressIndicatorChange {
 
   activeIndex?: number;
 
-  isFinished?: boolean;
+  isComplete?: boolean;
 
   itemStatuses?: SkyProgressIndicatorItemStatus[];
 }

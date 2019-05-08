@@ -8,17 +8,17 @@
   </sky-progress-indicator-status-marker>
 
   <div
-    class="sky-progress-indicator-item-main"
+    class="sky-progress-indicator-item-content"
   >
     <div *ngIf="showTitle"
-      class="sky-progress-indicator-item-title"
+      class="sky-progress-indicator-item-heading"
       role="heading"
       [ngClass]="{ 'sky-deemphasized': statusName === 'pending' }"
     >
-      {{ titlePrefix }}{{ title }}
+      {{ formattedTitle }}
     </div>
     <div
-      class="sky-progress-indicator-item-content"
+      class="sky-progress-indicator-item-body"
     >
       <ng-template [ngIf]="statusName !== 'incomplete'">
         <ng-content></ng-content>

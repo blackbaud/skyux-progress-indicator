@@ -83,7 +83,7 @@ describe('Progress indicator component', function () {
   }
 
   function getStepHeadingElements(): NodeList {
-    return fixture.nativeElement.querySelectorAll('.sky-progress-indicator-item-title');
+    return fixture.nativeElement.querySelectorAll('.sky-progress-indicator-item-heading');
   }
 
   beforeEach(function () {
@@ -123,7 +123,7 @@ describe('Progress indicator component', function () {
 
     const element = fixture.nativeElement;
 
-    expect(element.querySelector('.sky-progress-indicator-status-markers')).toBeTruthy();
+    expect(element.querySelector('.sky-progress-indicator-horizontal-status-markers')).toBeTruthy();
     expect(element.querySelector('.sky-progress-indicator-item .sky-progress-indicator-status-marker')).toBeFalsy();
   }));
 
@@ -132,6 +132,8 @@ describe('Progress indicator component', function () {
 
     detectChanges();
 
+    // Verify that the desired index is set to Active,
+    // and all previous steps are set to Complete.
     verifyActiveIndex(2);
     verifyItemStatuses([
       SkyProgressIndicatorItemStatus.Complete,
@@ -357,7 +359,7 @@ describe('Progress indicator component', function () {
 
       expect(spy).toHaveBeenCalledWith({
         activeIndex: 2,
-        isFinished: true,
+        isComplete: true,
         itemStatuses: [
           SkyProgressIndicatorItemStatus.Complete,
           SkyProgressIndicatorItemStatus.Complete,
@@ -587,6 +589,16 @@ describe('Progress indicator component', function () {
   describe('Accessibility', function () {
     it('should be accessible', async(function () {
       fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        expect(fixture.nativeElement).toBeAccessible();
+      });
+    }));
+
+    it('should be accessible in horizontal mode', async(function () {
+      componentInstance.displayMode = SkyProgressIndicatorDisplayMode.Horizontal;
+
+      fixture.detectChanges();
+
       fixture.whenStable().then(() => {
         expect(fixture.nativeElement).toBeAccessible();
       });

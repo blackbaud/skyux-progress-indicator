@@ -27,7 +27,7 @@ export class ProgressIndicatorWizardDemoComponent {
   ) { }
 
   public onProgressChanges(changes: SkyProgressIndicatorChange): void {
-    if (changes.isFinished) {
+    if (changes.isComplete) {
       this.instance.save();
     }
   }
