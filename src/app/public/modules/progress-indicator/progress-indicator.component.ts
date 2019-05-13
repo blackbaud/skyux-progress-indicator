@@ -123,12 +123,7 @@ export class SkyProgressIndicatorComponent implements OnInit, AfterContentInit, 
       return [];
     }
 
-    const statuses = this.itemComponents.map(c => c.status);
-
-    // Update the view whenever item statuses change.
-    this.changeDetector.markForCheck();
-
-    return statuses;
+    return this.itemComponents.map(c => c.status);
   }
 
   @ContentChildren(SkyProgressIndicatorItemComponent)
@@ -248,17 +243,20 @@ export class SkyProgressIndicatorComponent implements OnInit, AfterContentInit, 
       );
 
       // Set status.
+      let status: SkyProgressIndicatorItemStatus;
       if (activeIndex === i) {
         if (isPassive) {
-          component.status = SkyProgressIndicatorItemStatus.Pending;
+          status = SkyProgressIndicatorItemStatus.Pending;
         } else {
-          component.status = SkyProgressIndicatorItemStatus.Active;
+          status = SkyProgressIndicatorItemStatus.Active;
         }
       } else if (activeIndex > i) {
-        component.status = SkyProgressIndicatorItemStatus.Complete;
+        status = SkyProgressIndicatorItemStatus.Complete;
       } else {
-        component.status = SkyProgressIndicatorItemStatus.Incomplete;
+        status = SkyProgressIndicatorItemStatus.Incomplete;
       }
+
+      component.status = status;
 
       // Show or hide the status markers.
       component.showStatusMarker = isVertical;
@@ -339,6 +337,9 @@ export class SkyProgressIndicatorComponent implements OnInit, AfterContentInit, 
       default:
         break;
     }
+
+    // Update the view after a message is received.
+    this.changeDetector.markForCheck();
   }
 
   private subscribeToMessageStream(): void {

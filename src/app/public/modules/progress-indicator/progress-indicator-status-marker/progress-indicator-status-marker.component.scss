@@ -2,13 +2,9 @@
 @import "~@skyux/theme/scss/_compat/mixins";
 @import "../scss/progress-indicator-variables";
 
-:host {
-  display: flex;
-  flex: 1 0 auto;
-}
-
 .sky-progress-indicator-status-marker {
   display: flex;
+  height: 100%;
 
   &.sky-progress-indicator-status-marker-mode-vertical {
     flex-basis: $status-marker-width;
