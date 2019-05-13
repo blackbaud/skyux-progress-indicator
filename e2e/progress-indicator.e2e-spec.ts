@@ -1,99 +1,147 @@
 import {
-  element,
-  by
-} from 'protractor';
-
-import {
   expect,
   SkyHostBrowser
 } from '@skyux-sdk/e2e';
 
-describe('Progress indicator component (lg)', () => {
-  beforeEach(() => {
+import {
+  by,
+  element
+} from 'protractor';
+
+function performClick(query: string): void {
+  const elem = element(by.css(query));
+  elem.click();
+}
+
+describe('Progress indicator', function () {
+  beforeEach(function () {
     SkyHostBrowser.get('visual/progress-indicator');
     SkyHostBrowser.setWindowBreakpoint('lg');
   });
 
-  it('should show 1st step active and rest incomplete', (done) => {
-    expect('body').toMatchBaselineScreenshot(done, {
-      screenshotName: 'progress-indicator-lg-1'
-    });
-  });
+  describe('Vertical display', function () {
+    const screenshotElementId = 'app-screenshot-display-mode-vertical';
 
-  it('should show 1st and 2nd steps complete and the 3rd as active', (done) => {
-    element(by.id(`btn-progress`)).click();
-    element(by.id(`btn-progress`)).click();
-    expect('body').toMatchBaselineScreenshot(done, {
-      screenshotName: 'progress-indicator-lg-2'
-    });
-  });
+    beforeEach(function () {
+      performClick(`#${screenshotElementId}-next-button`);
 
-  it('should show 1st active, 2nd complete, and 3rd incomplete', (done) => {
-    element(by.id(`btn-progress`)).click();
-    element(by.id(`btn-progress`)).click();
-
-    element(by.id(`btn-regress`)).click();
-    element(by.id(`btn-regress`)).click();
-    expect('body').toMatchBaselineScreenshot(done, {
-      screenshotName: 'progress-indicator-lg-3'
-    });
-  });
-
-  it('should match passive progress indicator screenshot', (done) => {
-    element(by.id(`btn-passive`)).click();
-    expect('.sky-popover-container').toMatchBaselineScreenshot(done, {
-      screenshotName: 'progress-indicator-lg-passive'
-    });
-  });
-
-  describe('wizard', () => {
-    beforeEach(() => {
-      element(by.id(`btn-wizard`)).click();
+      SkyHostBrowser.moveCursorOffScreen();
+      SkyHostBrowser.scrollTo(`#${screenshotElementId}`);
     });
 
-    it('should show 1st step active and rest incomplete', (done) => {
-      expect('.sky-modal').toMatchBaselineScreenshot(done, {
-        screenshotName: 'progress-indicator-lg-wizard-1'
+    it('should match previous screenshot', function (done) {
+      expect(`#${screenshotElementId}`).toMatchBaselineScreenshot(done, {
+        screenshotName: 'progress-indicator-vertical'
       });
     });
 
-    it('should show 1st and 2nd steps complete and the 3rd as active', (done) => {
-      element(by.id(`btn-wizard-next`)).click();
-      element(by.id(`btn-wizard-next`)).click();
-      expect('.sky-modal').toMatchBaselineScreenshot(done, {
-        screenshotName: 'progress-indicator-lg-wizard-2'
-      });
-    });
+    it('should match previous screenshot (xs)', function (done) {
+      SkyHostBrowser.setWindowBreakpoint('xs');
 
-    it('should show 1st active, 2nd complete, and 3rd incomplete', (done) => {
-      element(by.id(`btn-wizard-next`)).click();
-      element(by.id(`btn-wizard-next`)).click();
-
-      element(by.id(`btn-wizard-previous`)).click();
-      element(by.id(`btn-wizard-previous`)).click();
-      expect('.sky-modal').toMatchBaselineScreenshot(done, {
-        screenshotName: 'progress-indicator-lg-wizard-3'
+      expect(`#${screenshotElementId}`).toMatchBaselineScreenshot(done, {
+        screenshotName: 'progress-indicator-vertical-xs'
       });
     });
   });
-});
 
-describe('Progress indicator component (xs)', () => {
-  beforeEach(() => {
-    SkyHostBrowser.get('visual/progress-indicator');
-    SkyHostBrowser.setWindowBreakpoint('xs');
-  });
+  describe('Horizontal display', function () {
+    const screenshotElementId = 'app-screenshot-display-mode-horizontal';
 
-  it('should show 1st step active and rest incomplete', (done) => {
-    expect('body').toMatchBaselineScreenshot(done, {
-      screenshotName: 'progress-indicator-xs-1'
+    beforeEach(function () {
+      performClick(`#${screenshotElementId}-next-button button`);
+
+      SkyHostBrowser.moveCursorOffScreen();
+      SkyHostBrowser.scrollTo(`#${screenshotElementId}`);
+    });
+
+    it('should match previous screenshot', function (done) {
+      expect(`#${screenshotElementId}`).toMatchBaselineScreenshot(done, {
+        screenshotName: 'progress-indicator-horizontal'
+      });
+    });
+
+    it('should match disabled buttons previous screenshot', function (done) {
+      const buttonElement = element(by.id(`${screenshotElementId}-disable-buttons-button`));
+      buttonElement.click();
+
+      expect(`#${screenshotElementId}`).toMatchBaselineScreenshot(done, {
+        screenshotName: 'progress-indicator-horizontal-disabled'
+      });
+    });
+
+    it('should match previous screenshot (xs)', function (done) {
+      SkyHostBrowser.setWindowBreakpoint('xs');
+
+      expect(`#${screenshotElementId}`).toMatchBaselineScreenshot(done, {
+        screenshotName: 'progress-indicator-horizontal-xs'
+      });
     });
   });
 
-  it('should show 1st step active and rest incomplete', (done) => {
-    element(by.id(`btn-wizard`)).click();
-    expect('.sky-modal').toMatchBaselineScreenshot(done, {
-      screenshotName: 'progress-indicator-xs-wizard-1'
+  describe('Passive mode', function () {
+    const screenshotElementId = 'app-screenshot-passive-mode';
+
+    beforeEach(function () {
+      SkyHostBrowser.moveCursorOffScreen();
+      SkyHostBrowser.scrollTo(`#${screenshotElementId}`);
+    });
+
+    it('should match previous screenshot', function (done) {
+      expect(`#${screenshotElementId}`).toMatchBaselineScreenshot(done, {
+        screenshotName: 'progress-indicator-passive'
+      });
+    });
+
+    it('should match previous screenshot (xs)', function (done) {
+      SkyHostBrowser.setWindowBreakpoint('xs');
+
+      expect(`#${screenshotElementId}`).toMatchBaselineScreenshot(done, {
+        screenshotName: 'progress-indicator-passive-xs'
+      });
+    });
+
+    it('should match previous popover screenshot', function (done) {
+      expect(`#${screenshotElementId}`).toMatchBaselineScreenshot(done, {
+        screenshotName: 'progress-indicator-passive'
+      });
+    });
+  });
+
+  describe('Passive mode (popover)', function () {
+    const screenshotElementId = 'app-screenshot-passive-mode-popover';
+
+    beforeEach(function () {
+      SkyHostBrowser.moveCursorOffScreen();
+      SkyHostBrowser.scrollTo(`#${screenshotElementId}`);
+
+      performClick(`#${screenshotElementId}-button`);
+    });
+
+    it('should match previous screenshot', function (done) {
+      expect(`#${screenshotElementId}-target .sky-popover`).toMatchBaselineScreenshot(done, {
+        screenshotName: 'progress-indicator-passive-popover'
+      });
+    });
+  });
+
+  describe('Horizontal mode (modal)', function () {
+    beforeEach(function () {
+      performClick('#app-screenshot-open-modal-button');
+      performClick('#app-screenshot-modal-next-button');
+    });
+
+    it('should match previous screenshot', function (done) {
+      expect(`.sky-modal`).toMatchBaselineScreenshot(done, {
+        screenshotName: 'progress-indicator-modal'
+      });
+    });
+
+    it('should match previous screenshot (xs)', function (done) {
+      SkyHostBrowser.setWindowBreakpoint('xs');
+
+      expect(`.sky-modal`).toMatchBaselineScreenshot(done, {
+        screenshotName: 'progress-indicator-modal-xs'
+      });
     });
   });
 });
