@@ -170,6 +170,15 @@ export class SkyProgressIndicatorComponent implements OnInit, AfterContentInit, 
 
     this.updateSteps();
 
+    this.itemComponents
+      .changes
+      .takeUntil(this.ngUnsubscribe)
+      .subscribe(() => {
+        this.updateSteps();
+        this.changeDetector.markForCheck();
+        this.notifyChange();
+      });
+
     // Wait for item components' change detection to complete
     // before notifying changes to the consumer.
     this.windowRef.nativeWindow.setTimeout(() => {
@@ -230,6 +239,10 @@ export class SkyProgressIndicatorComponent implements OnInit, AfterContentInit, 
   }
 
   private updateSteps(): void {
+    if (this.activeIndex > (this.itemComponents.length - 1)) {
+      this.activeIndex--;
+    }
+
     const activeIndex = this.activeIndex;
     const isPassive = this.isPassive;
     const isVertical = (this.displayMode === SkyProgressIndicatorDisplayMode.Vertical);
