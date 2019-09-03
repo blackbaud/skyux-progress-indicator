@@ -20,6 +20,7 @@ import {
   Subject
 } from 'rxjs/Subject';
 
+import 'rxjs/add/operator/delay';
 import 'rxjs/add/operator/takeUntil';
 
 import {
@@ -170,12 +171,14 @@ export class SkyProgressIndicatorComponent implements OnInit, AfterContentInit, 
 
     this.updateSteps();
 
+    // Note: The delay here is to ensure all change detection on the items has finished. Without
+    // the delay we receive a changed before checked error for vertical progress indicators
     this.itemComponents
       .changes
       .takeUntil(this.ngUnsubscribe)
+      .delay(0)
       .subscribe(() => {
         this.updateSteps();
-        this.changeDetector.markForCheck();
         this.notifyChange();
       });
 
