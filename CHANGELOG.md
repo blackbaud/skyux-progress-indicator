@@ -1,7 +1,7 @@
 # 3.2.0 (2019-11-04)
 
 - Added support for `@skyux-sdk/builder@3.11.0`. [#31](https://github.com/blackbaud/skyux-progress-indicator/pull/31)
-- Fixed the spacing between buttons for the progress indicator component horizontal mode. [#31](https://github.com/blackbaud/skyux-progress-indicator/pull/31)
+- Fixed the spacing between buttons for the progress indicator component's horizontal mode. [#31](https://github.com/blackbaud/skyux-progress-indicator/pull/31)
 
 # 3.1.1 (2019-09-11)
 
