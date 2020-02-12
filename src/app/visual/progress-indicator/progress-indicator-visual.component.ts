@@ -11,7 +11,10 @@ import {
   Subject
 } from 'rxjs/Subject';
 
+import 'rxjs/add/operator/filter';
+
 import {
+  SkyProgressIndicatorActionClickArgs,
   SkyProgressIndicatorChange,
   SkyProgressIndicatorMessage,
   SkyProgressIndicatorMessageType
@@ -64,6 +67,15 @@ export class ProgressIndicatorVisualComponent implements OnDestroy {
 
   public onProgressChanges(change: SkyProgressIndicatorChange): void {
     console.log('Progress change:', change);
+  }
+
+  public onFinishClick(args: SkyProgressIndicatorActionClickArgs): void {
+    this.disabled = true;
+    // Simulate an asynchronous call.
+    setTimeout(() => {
+      args.progressHandler.advance();
+      this.disabled = false;
+    }, 2000);
   }
 
   public disableNavButtons(): void {
