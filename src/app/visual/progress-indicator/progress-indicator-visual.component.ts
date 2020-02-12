@@ -11,8 +11,6 @@ import {
   Subject
 } from 'rxjs/Subject';
 
-import 'rxjs/add/operator/filter';
-
 import {
   SkyProgressIndicatorActionClickArgs,
   SkyProgressIndicatorChange,
