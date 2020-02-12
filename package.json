@@ -5,7 +5,7 @@
   "main": "bundles/bundle.umd.js",
   "module": "index.ts",
   "scripts": {
-    "build": "skyux build-public-library",
+    "build": "skyux build-public-library --fullTemplateTypeCheck",
     "skyux": "skyux",
     "start": "skyux serve --hmr",
     "test": "skyux test --coverage library --logFormat none",
@@ -42,7 +42,7 @@
     "@blackbaud/auth-client": "2.22.0",
     "@pact-foundation/pact": "9.6.1",
     "@pact-foundation/pact-web": "9.6.1",
-    "@skyux-sdk/builder": "3.14.0",
+    "@skyux-sdk/builder": "3.15.0",
     "@skyux-sdk/builder-plugin-skyux": "1.2.2",
     "@skyux-sdk/e2e": "3.1.2",
     "@skyux-sdk/pact": "3.3.1",
