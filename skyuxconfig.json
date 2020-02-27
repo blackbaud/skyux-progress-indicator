@@ -5,7 +5,8 @@
   "compileMode": "aot",
   "app": {
     "styles": [
-      "src/app/visual-styles.scss"
+      "@skyux/theme/css/sky.css",
+      "@skyux/docs-tools/css/docs-tools.css"
     ]
   },
   "skyuxModules": [
