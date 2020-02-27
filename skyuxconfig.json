@@ -3,15 +3,23 @@
   "name": "skyux-progress-indicator",
   "mode": "easy",
   "compileMode": "aot",
+  "host": {
+    "url": "https://developer.blackbaud.com"
+  },
+  "omnibar": {
+    "experimental": true
+  },
+  "params": {
+    "svcid": {
+      "value": "skyux"
+    }
+  },
   "app": {
     "styles": [
-      "@skyux/theme/css/sky.css",
+      "src/app/visual-styles.scss",
       "@skyux/docs-tools/css/docs-tools.css"
     ]
   },
-  "skyuxModules": [
-    "SkyErrorModule"
-  ],
   "plugins": [
     "@skyux-sdk/builder-plugin-skyux"
   ],
