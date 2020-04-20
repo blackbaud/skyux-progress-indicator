@@ -1,6 +1,6 @@
 {
   "name": "@skyux/progress-indicator",
-  "version": "3.3.0",
+  "version": "4.0.0-rc.0",
   "description": "SKY UX Progress Indicator",
   "main": "bundles/bundle.umd.js",
   "module": "index.ts",
