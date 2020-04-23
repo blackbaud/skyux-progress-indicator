@@ -23,6 +23,10 @@ import {
 })
 export class SkyProgressIndicatorResetButtonComponent implements OnDestroy {
 
+/**
+ * Indicates whether to disable the reset button.
+ * @default "false"
+ */
   @Input()
   public set disabled(value: boolean) {
     this._disabled = value;
@@ -33,9 +37,16 @@ export class SkyProgressIndicatorResetButtonComponent implements OnDestroy {
     return this._disabled || false;
   }
 
+/**
+ * Specifies the progress indicator component to associate with the reset button.
+ * @required
+ */
   @Input()
   public progressIndicator: SkyProgressIndicatorComponent;
 
+/**
+ * Fires when users select the reset button that marks all items as incomplete and sets the first progress item as the active item.
+ */
   @Output()
   public resetClick = new EventEmitter<any>();
 

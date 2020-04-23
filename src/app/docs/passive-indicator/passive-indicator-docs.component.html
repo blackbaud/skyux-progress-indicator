@@ -1,7 +1,7 @@
 <sky-docs-demo-page
   moduleName="SkyProgressIndicatorModule"
   moduleSourceCodePath="src/app/public/modules/progress-indicator/"
-  pageTitle="Passive Indicator"
+  pageTitle="Passive Progress Indicator"
 >
 
 <sky-docs-demo-page-summary>
@@ -34,7 +34,7 @@
         headingStyle="danger"
       >
         <p>
-          Don't use passive progress indicators for tasks that require user interaction. Use <a href="https://developer.blackbaud.com/skyux/components/progress-indicator/waterfall-progress-indicator">waterfall progress indicators</a> or <a href="https://developer.blackbaud.com/skyux/components/wizard">wizards</a> instead.
+          Don't use passive progress indicators for tasks that require user interaction. Use <a href="https://developer.blackbaud.com/skyux-progress-indicator/docs/waterfall-indicator">waterfall progress indicators</a> or <a href="https://developer.blackbaud.com/skyux/components/wizard">wizards</a> instead.
         </p>
 
         <sky-docs-design-guideline-thumbnail
@@ -71,7 +71,7 @@
         </sky-docs-design-guideline-thumbnail>
 
         <sky-docs-design-guideline-thumbnail
-          caption="Do roll up steps into a single status in lists. Use a container such as flyouts or popovers to display details from passive progress indicators."
+          caption="Do roll up steps into a single status in lists. Use containers such as flyouts or popovers to display details from passive progress indicators."
           captionType="success"
           imageSource="~/assets/img/guidelines/passive-indicator/passive-progress-usage-5.png"
         >
@@ -98,7 +98,7 @@
       <sky-docs-design-guideline
         heading="Step details"
       >
-        <p>
+        <p class="sky-docs-text-block">
           You can provide additional details about completed or current steps. Use step details to provide extra context to users, but avoid too many details or the implication that users should take action.
         </p>
       </sky-docs-design-guideline>
@@ -107,7 +107,7 @@
     <sky-docs-demo-page-section
       heading="Content"
     >
-      <p>
+      <p class="sky-docs-text-block">
         Be concise in step labels. For completed steps, use past tense verbs ("Submitted," "Approved") and include datestamps in parentheses. Only include timestamps if the extra detail is necessary. For pending steps, use present tense verbs or gerunds ("Submitting", "Awaiting").
       </p>
       <p>
@@ -118,7 +118,7 @@
     <sky-docs-demo-page-section
       heading="Layout"
     >
-      <p>
+      <p class="sky-docs-text-block">
         Use passive progress indicators one at a time. When they apply to record views, use them in page summaries or other containers such as tiles.
       </p>
       <p>

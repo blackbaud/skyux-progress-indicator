@@ -17,6 +17,10 @@ import {
 })
 export class SkyProgressIndicatorItemComponent {
 
+/**
+ * Specifies a header to display above the progress indicator.
+ * @required
+ */
   @Input()
   public title: string;
 

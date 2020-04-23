@@ -36,9 +36,17 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SkyProgressIndicatorNavButtonComponent implements OnInit, OnDestroy {
+/**
+ * Specifies the label to display on the nav button.
+ * @default "Next"
+ */
   @Input()
   public buttonText: string;
 
+/**
+ * Specifies the type of nav button to include. The valid options are `finish`, `next`, and `previous`.
+ * @default "next"
+ */
   @Input()
   public set buttonType(value: SkyProgressIndicatorNavButtonType) {
     this._buttonType = value;
@@ -52,6 +60,10 @@ export class SkyProgressIndicatorNavButtonComponent implements OnInit, OnDestroy
     return this._buttonType;
   }
 
+/**
+ * Indicates whether to disable the nav button.
+ * @default "false"
+ */
   @Input()
   public set disabled(value: boolean) {
     this._disabled = value;
@@ -80,6 +92,10 @@ export class SkyProgressIndicatorNavButtonComponent implements OnInit, OnDestroy
     return this._disabled || false;
   }
 
+/**
+ * Specifies the progress indicator component to associate with the nav button.
+ * @required
+ */
   @Input()
   public progressIndicator: SkyProgressIndicatorComponent;
 

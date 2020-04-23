@@ -43,6 +43,12 @@ import {
 })
 export class SkyProgressIndicatorComponent implements OnInit, AfterContentInit, OnDestroy {
 
+/**
+ * Specifies whether to display the progress indicator vertically or horizontally.
+ * For [modal wizards](https://developer.blackbaud.com/skyux/components/wizard),
+ * use the horizontal display mode. For waterfall pages and passive progress indicators, use the vertical display mode.
+ * @default "vertical"
+ */
   @Input()
   public set displayMode(value: SkyProgressIndicatorDisplayMode) {
     this._displayMode = value;
@@ -56,6 +62,11 @@ export class SkyProgressIndicatorComponent implements OnInit, AfterContentInit, 
     return this._displayMode;
   }
 
+/**
+ * Indicates whether the progress indicator is passive. Passive progress indicators inform users of
+ * progress that concerns them but that they are not responsible for, and they must use the vertical display mode.
+ * @default "false"
+ */
   @Input()
   public set isPassive(value: boolean) {
     this._isPassive = value;
@@ -70,6 +81,11 @@ export class SkyProgressIndicatorComponent implements OnInit, AfterContentInit, 
     return this._isPassive || false;
   }
 
+/**
+ * Specifies an observable of `SkyProgressIndicatorMessageType` that determines the status to
+ * display for progress items in the progress indicator. The message stream is a queue of
+ * commanding messages to change the state of the progress indicator based on one of the three message types.
+ */
   @Input()
   public set messageStream(
     value: Subject<SkyProgressIndicatorMessage | SkyProgressIndicatorMessageType>
@@ -79,6 +95,11 @@ export class SkyProgressIndicatorComponent implements OnInit, AfterContentInit, 
     }
   }
 
+/**
+ * Specifies the index for the first progress item to make active when the progress indicator
+ * loads. All steps that precede the active progress item are marked as complete, and all steps
+ * that follow the active progress item are marked as incomplete.
+ */
   @Input()
   public set startingIndex(value: number) {
     this._startingIndex = value;
@@ -88,6 +109,9 @@ export class SkyProgressIndicatorComponent implements OnInit, AfterContentInit, 
     return this._startingIndex || 0;
   }
 
+/**
+ * Fires when the progress indicator changes the status of a progress item.
+ */
   @Output()
   public progressChanges = new EventEmitter<SkyProgressIndicatorChange>();
 
