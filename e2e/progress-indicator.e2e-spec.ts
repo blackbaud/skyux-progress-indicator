@@ -118,7 +118,7 @@ describe('Progress indicator', function () {
     });
 
     it('should match previous screenshot', function (done) {
-      expect(`#${screenshotElementId}-target .sky-popover`).toMatchBaselineScreenshot(done, {
+      expect(`.sky-popover`).toMatchBaselineScreenshot(done, {
         screenshotName: 'progress-indicator-passive-popover'
       });
     });
