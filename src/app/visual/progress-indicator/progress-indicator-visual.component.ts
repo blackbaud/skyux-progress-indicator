@@ -16,7 +16,7 @@ import {
   SkyProgressIndicatorChange,
   SkyProgressIndicatorMessage,
   SkyProgressIndicatorMessageType
-} from '../../public';
+} from '../../public/public_api';
 
 import {
   ProgressIndicatorWizardDemoComponent
