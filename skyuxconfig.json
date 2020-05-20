@@ -1,5 +1,5 @@
 {
-  "$schema": "node_modules/@skyux/config/skyuxconfig-schema.json",
+  "$schema": "./node_modules/@skyux/config/skyuxconfig-schema.json",
   "name": "skyux-progress-indicator",
   "mode": "easy",
   "compileMode": "aot",
@@ -17,6 +17,11 @@
     },
     "unit": {
       "browserSet": "paranoid"
+    }
+  },
+  "host": {
+    "frameOptions": {
+      "none": true
     }
   }
 }
