@@ -96,6 +96,9 @@ export class SkyProgressIndicatorNavButtonComponent implements OnInit, OnDestroy
   @Input()
   public progressIndicator: SkyProgressIndicatorComponent;
 
+  /**
+   * Fires when the user clicks the nav button.
+   */
   @Output()
   public actionClick = new EventEmitter<SkyProgressIndicatorActionClickArgs>();
 
