@@ -9,6 +9,9 @@ import {
   SkyProgressIndicatorItemStatus
 } from '../types/progress-indicator-item-status';
 
+/**
+ * Specifies a step to include in the progress indicator.
+ */
 @Component({
   selector: 'sky-progress-indicator-item',
   templateUrl: './progress-indicator-item.component.html',

@@ -43,12 +43,16 @@ import {
   SkyProgressIndicatorComponent
 } from '../progress-indicator.component';
 
+/**
+ * Displays a button to navigate the steps in a modal wizard.
+ */
 @Component({
   selector: 'sky-progress-indicator-nav-button',
   templateUrl: './progress-indicator-nav-button.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SkyProgressIndicatorNavButtonComponent implements OnInit, OnDestroy {
+
 /**
  * Specifies the label to display on the nav button.
  * @default "Next"
@@ -57,7 +61,8 @@ export class SkyProgressIndicatorNavButtonComponent implements OnInit, OnDestroy
   public buttonText: string;
 
 /**
- * Specifies the type of nav button to include. The valid options are `finish`, `next`, and `previous`.
+ * Specifies the type of nav button to include.
+ * The valid options are `finish`, `next`, `previous`, and `reset`.
  * @default "next"
  */
   @Input()
@@ -105,13 +110,16 @@ export class SkyProgressIndicatorNavButtonComponent implements OnInit, OnDestroy
     return this._disabled || false;
   }
 
-/**
- * Specifies the progress indicator component to associate with the nav button.
- * @required
- */
+  /**
+   * Specifies the progress indicator component to associate with the nav button.
+   * @required
+   */
   @Input()
   public progressIndicator: SkyProgressIndicatorComponent;
 
+  /**
+   * Fires when users click the nav button.
+   */
   @Output()
   public actionClick = new EventEmitter<SkyProgressIndicatorActionClickArgs>();
 

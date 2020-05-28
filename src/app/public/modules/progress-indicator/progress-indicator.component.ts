@@ -98,7 +98,7 @@ export class SkyProgressIndicatorComponent implements OnInit, AfterContentInit, 
 /**
  * Specifies an observable of `SkyProgressIndicatorMessageType` that determines the status to
  * display for progress items in the progress indicator. The message stream is a queue of
- * commanding messages to change the state of the progress indicator based on one of the three message types.
+ * commanding messages to change the state of the progress indicator based on the message type.
  */
   @Input()
   public set messageStream(
