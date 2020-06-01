@@ -1,4 +1,5 @@
 import {
+  AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
@@ -6,25 +7,37 @@ import {
   Input,
   OnDestroy,
   Optional,
-  Output,
-  AfterViewInit
+  Output
 } from '@angular/core';
 
 import {
   Subject
-} from 'rxjs/Subject';
-
-import 'rxjs/add/operator/distinctUntilChanged';
-
-import 'rxjs/add/operator/takeUntil';
+} from 'rxjs';
 
 import {
-  SkyProgressIndicatorActionClickArgs,
-  SkyProgressIndicatorActionClickProgressHandler,
-  SkyProgressIndicatorChange,
-  SkyProgressIndicatorMessageType,
+  distinctUntilChanged,
+  takeUntil
+} from 'rxjs/operators';
+
+import {
+  SkyProgressIndicatorActionClickArgs
+} from '../types/progress-indicator-action-click-args';
+
+import {
+  SkyProgressIndicatorActionClickProgressHandler
+} from '../types/progress-indicator-action-click-progress-handler';
+
+import {
+  SkyProgressIndicatorChange
+} from '../types/progress-indicator-change';
+
+import {
+  SkyProgressIndicatorMessageType
+} from '../types/progress-indicator-message-type';
+
+import {
   SkyProgressIndicatorNavButtonType
-} from '../types';
+} from '../types/progress-indicator-nav-button-type';
 
 import {
   SkyProgressIndicatorComponent
@@ -94,8 +107,10 @@ export class SkyProgressIndicatorNavButtonComponent implements AfterViewInit, On
       }
 
       this._progressIndicator.progressChanges
-        .distinctUntilChanged()
-        .takeUntil(this.ngUnsubscribe)
+        .pipe(
+          distinctUntilChanged(),
+          takeUntil(this.ngUnsubscribe)
+        )
         .subscribe((change: SkyProgressIndicatorChange) => {
           this.lastProgressChange = change;
           this.updateButtonVisibility(change);
@@ -198,23 +213,23 @@ export class SkyProgressIndicatorNavButtonComponent implements AfterViewInit, On
 
     switch (this.buttonType) {
       case 'finish':
-      type = SkyProgressIndicatorMessageType.Finish;
-      break;
+        type = SkyProgressIndicatorMessageType.Finish;
+        break;
 
       case 'next':
-      type = SkyProgressIndicatorMessageType.Progress;
-      break;
+        type = SkyProgressIndicatorMessageType.Progress;
+        break;
 
       case 'previous':
-      type = SkyProgressIndicatorMessageType.Regress;
-      break;
+        type = SkyProgressIndicatorMessageType.Regress;
+        break;
 
       case 'reset':
-      type = SkyProgressIndicatorMessageType.Reset;
-      break;
+        type = SkyProgressIndicatorMessageType.Reset;
+        break;
 
       default:
-      break;
+        break;
     }
 
     // If the consumer has subscribed to the `actionClick` event,
