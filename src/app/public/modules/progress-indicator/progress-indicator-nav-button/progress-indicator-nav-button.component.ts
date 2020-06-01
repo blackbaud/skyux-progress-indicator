@@ -3,6 +3,7 @@ import {
   ChangeDetectorRef,
   Component,
   EventEmitter,
+  HostBinding,
   Input,
   OnDestroy,
   OnInit,
@@ -33,6 +34,7 @@ import {
 @Component({
   selector: 'sky-progress-indicator-nav-button',
   templateUrl: './progress-indicator-nav-button.component.html',
+  styleUrls: ['./progress-indicator-nav-button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SkyProgressIndicatorNavButtonComponent implements OnInit, OnDestroy {
@@ -52,7 +54,13 @@ export class SkyProgressIndicatorNavButtonComponent implements OnInit, OnDestroy
     return this._buttonType;
   }
 
+  /**
+   * The binding here ensures that we place a native HTML disabled attribute on the host element.
+   * Without this it is not possible to stop click events on the parent component based on an inner
+   * variable. The onClick stopPropogation handles this case when the button is enabled.
+   */
   @Input()
+  @HostBinding('attr.disabled')
   public set disabled(value: boolean) {
     this._disabled = value;
     this.changeDetector.markForCheck();
@@ -60,8 +68,8 @@ export class SkyProgressIndicatorNavButtonComponent implements OnInit, OnDestroy
 
   public get disabled(): boolean {
     const buttonType = this.buttonType;
-    const activeIndex = this.lastProgressChange.activeIndex;
-    const isLastStep = (activeIndex === this.lastProgressChange.itemStatuses.length - 1);
+    const activeIndex = this.lastProgressChange ? this.lastProgressChange.activeIndex : 0;
+    const isLastStep = this.lastProgressChange ? (activeIndex === this.lastProgressChange.itemStatuses.length - 1) : false;
 
     if (
       buttonType === 'previous' &&
@@ -186,23 +194,23 @@ export class SkyProgressIndicatorNavButtonComponent implements OnInit, OnDestroy
 
     switch (this.buttonType) {
       case 'finish':
-      type = SkyProgressIndicatorMessageType.Finish;
-      break;
+        type = SkyProgressIndicatorMessageType.Finish;
+        break;
 
       case 'next':
-      type = SkyProgressIndicatorMessageType.Progress;
-      break;
+        type = SkyProgressIndicatorMessageType.Progress;
+        break;
 
       case 'previous':
-      type = SkyProgressIndicatorMessageType.Regress;
-      break;
+        type = SkyProgressIndicatorMessageType.Regress;
+        break;
 
       case 'reset':
-      type = SkyProgressIndicatorMessageType.Reset;
-      break;
+        type = SkyProgressIndicatorMessageType.Reset;
+        break;
 
       default:
-      break;
+        break;
     }
 
     // If the consumer has subscribed to the `actionClick` event,
