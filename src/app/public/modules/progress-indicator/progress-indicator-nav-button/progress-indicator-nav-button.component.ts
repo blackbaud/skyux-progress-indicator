@@ -44,7 +44,8 @@ import {
 } from '../progress-indicator.component';
 
 /**
- * Displays a button to navigate the steps in a modal wizard.
+ * Displays a button to navigate the steps in modal wizards. We recommend against using it in
+ * passive progress indicators and waterfall progress indicators.
  */
 @Component({
   selector: 'sky-progress-indicator-nav-button',
@@ -118,7 +119,9 @@ export class SkyProgressIndicatorNavButtonComponent implements OnInit, OnDestroy
   public progressIndicator: SkyProgressIndicatorComponent;
 
   /**
-   * Fires when users click the nav button.
+   * Fires when users select the nav button and emits a `SkyProgressIndicatorActionClickArgs`
+   * object that is passed into the callback function to allow consumers to decide whether
+   * the button’s action should complete successfully.
    */
   @Output()
   public actionClick = new EventEmitter<SkyProgressIndicatorActionClickArgs>();

@@ -21,7 +21,7 @@ import {
 export class SkyProgressIndicatorItemComponent {
 
 /**
- * Specifies a header to display above the progress indicator.
+ * Specifies the step label to display for a step in the progress indicator.
  * @required
  */
   @Input()

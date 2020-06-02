@@ -17,8 +17,9 @@ import {
 } from '../progress-indicator.component';
 
 /**
- * Displays a button to mark all items in the progress indicator as incomplete and set the first progress item as the active item.
- * The steps after the active progress item remain incomplete until users reach them in their sequential order.
+ * Displays a button to mark all items in the progress indicator as incomplete and set the
+ * first item as the active item. The steps after the active item remain incomplete until
+ * users reach them in their sequential order.
  */
 @Component({
   selector: 'sky-progress-indicator-reset-button',
@@ -49,7 +50,8 @@ export class SkyProgressIndicatorResetButtonComponent implements OnDestroy {
   public progressIndicator: SkyProgressIndicatorComponent;
 
   /**
-   * Fires when users select the reset button that marks all items as incomplete and sets the first progress item as the active item.
+   * Fires when users select the reset button that marks all items as incomplete and sets the
+   * first item as the active item.
    */
   @Output()
   public resetClick = new EventEmitter<any>();

@@ -60,7 +60,7 @@ export class SkyProgressIndicatorComponent implements OnInit, AfterContentInit, 
 /**
  * Specifies whether to display the progress indicator vertically or horizontally.
  * For [modal wizards](https://developer.blackbaud.com/skyux/components/wizard),
- * use the horizontal display mode. For waterfall pages and passive progress indicators, use the vertical display mode.
+ * use the horizontal display mode. For passive progress indicators and waterfall progress indicators, use the vertical display mode.
  * @default "vertical"
  */
   @Input()
@@ -97,7 +97,7 @@ export class SkyProgressIndicatorComponent implements OnInit, AfterContentInit, 
 
 /**
  * Specifies an observable of `SkyProgressIndicatorMessageType` that determines the status to
- * display for progress items in the progress indicator. The message stream is a queue of
+ * display for items in the progress indicator. The message stream is a queue of
  * commanding messages to change the state of the progress indicator based on the message type.
  */
   @Input()
@@ -110,9 +110,9 @@ export class SkyProgressIndicatorComponent implements OnInit, AfterContentInit, 
   }
 
 /**
- * Specifies the index for the first progress item to make active when the progress indicator
- * loads. All steps that precede the active progress item are marked as complete, and all steps
- * that follow the active progress item are marked as incomplete.
+ * Specifies the index for the item to make active when the progress indicator
+ * loads. All steps that precede the active item are marked as complete, and all steps
+ * that follow the active item are marked as incomplete.
  */
   @Input()
   public set startingIndex(value: number) {
@@ -124,7 +124,7 @@ export class SkyProgressIndicatorComponent implements OnInit, AfterContentInit, 
   }
 
 /**
- * Fires when the progress indicator changes the status of a progress item.
+ * Fires when the progress indicator changes the status of an item.
  */
   @Output()
   public progressChanges = new EventEmitter<SkyProgressIndicatorChange>();

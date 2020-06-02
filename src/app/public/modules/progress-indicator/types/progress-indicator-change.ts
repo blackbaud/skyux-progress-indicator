@@ -5,17 +5,17 @@ import {
 export interface SkyProgressIndicatorChange {
 
   /**
-   * Indicates which progress indicator item is currently active.
+   * Specifies the active item.
    */
   activeIndex?: number;
 
   /**
-   * Indicates if the progress indicator is complete.
+   * Indicates whether the progress indicator is complete.
    */
   isComplete?: boolean;
 
   /**
-   * Array containing the status for each progress indicator item.
+   * Specifies an array with the status of each item.
    */
   itemStatuses?: SkyProgressIndicatorItemStatus[];
 }
