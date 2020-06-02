@@ -8,6 +8,26 @@
   Passive progress indicators represent sequential steps in processes outside of user control.
 </sky-docs-demo-page-summary>
 
+  <sky-docs-demo>
+    <sky-progress-indicator
+      [isPassive]="true"
+      [startingIndex]="1"
+    >
+      <sky-progress-indicator-item
+        title="Finished step"
+      >Optional details about this step
+      </sky-progress-indicator-item>
+      <sky-progress-indicator-item
+        title="Current step"
+      >
+      </sky-progress-indicator-item>
+      <sky-progress-indicator-item
+        title="HIDDEN TITLE"
+      >
+      </sky-progress-indicator-item>
+    </sky-progress-indicator>
+  </sky-docs-demo>
+
   <sky-docs-design-guidelines>
 
     <sky-docs-demo-page-section
@@ -102,7 +122,7 @@
           You can provide additional details about completed or current steps. Use step details to provide extra context to users, but avoid too many details or the implication that users should take action.
         </p>
       </sky-docs-design-guideline>
-    </sky-docs-demo-page-section> 
+    </sky-docs-demo-page-section>
 
     <sky-docs-demo-page-section
       heading="Content"
@@ -150,4 +170,9 @@
     </sky-docs-demo-page-section>
 
   </sky-docs-design-guidelines>
+
+  <sky-docs-code-examples>
+    <sky-docs-code-example heading="Toggle"
+      sourceCodePath="src/app/public/plugin-resources/code-examples/passive-indicator/basic"></sky-docs-code-example>
+  </sky-docs-code-examples>
 </sky-docs-demo-page>
