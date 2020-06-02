@@ -1,11 +1,11 @@
 <sky-docs-demo-page
   moduleName="SkyProgressIndicatorModule"
   moduleSourceCodePath="src/app/public/modules/progress-indicator/"
-  pageTitle="Waterfall Indicator"
+  pageTitle="Waterfall Progress Indicator"
 >
 
 <sky-docs-demo-page-summary>
-  Waterfall pages walk users through sequential steps in lengthy or complex tasks.
+  Waterfall progress indicators walk users through sequential steps in lengthy or complex tasks.
 </sky-docs-demo-page-summary>
 
   <sky-docs-design-guidelines>
@@ -55,7 +55,7 @@
         headingStyle="danger"
       >
         <p>
-          Don’t use waterfall pages when users monitor a sequence of events but are not responsible for completing the steps. Use <a href="https://developer.blackbaud.com/skyux/components/progress-indicator/passive-progress-indicator">passive progress indicators</a> instead.
+          Don’t use waterfall progress indicators when users monitor a sequence of events but are not responsible for completing the steps. Use <a href="https://developer.blackbaud.com/skyux/components/progress-indicator/passive-progress-indicator">passive progress indicators</a> instead.
         </p>
 
         <sky-docs-design-guideline-thumbnail
@@ -100,7 +100,7 @@
         </sky-docs-design-guideline-thumbnail>
 
         <sky-docs-design-guideline-thumbnail
-          caption="Do present decisions that determine the number and order steps before showing waterfall progress indicators."
+          caption="Do present decisions that determine the number and order of steps before showing waterfall progress indicators."
           captionType="success"
           imageSource="~/assets/img/guidelines/passive-indicator/waterfall-progress-usage-7.png"
         >
@@ -145,7 +145,7 @@
         <sky-docs-anatomy-item>Completed step action</sky-docs-anatomy-item>
         <sky-docs-anatomy-item>Active step action</sky-docs-anatomy-item>
         <sky-docs-anatomy-item isOptional="true">Step details </sky-docs-anatomy-item>
-        <sky-docs-anatomy-item isOptional="true">Start over action </sky-docs-anatomy-item>
+        <sky-docs-anatomy-item isOptional="true">Start-over action </sky-docs-anatomy-item>
       </sky-docs-anatomy>
     </sky-docs-demo-page-section>
 
@@ -155,7 +155,7 @@
       <sky-docs-design-guideline
         heading="Waterfall title"
       >
-        <p>
+        <p class="sky-docs-text-block">
           We strongly recommend including a waterfall title to reflect the context of the overall task. Do not use a left-aligned page title when you include a waterfall title. The waterfall title does not change when users progress through the waterfall steps.
         </p>
       </sky-docs-design-guideline>
@@ -163,16 +163,16 @@
       <sky-docs-design-guideline
         heading="Step details"
       >
-        <p>
+        <p class="sky-docs-text-block">
           You can provide additional details about completed steps, but limit details to single pieces of information. Don’t go overboard because users can reopen modals to review choices as necessary.
         </p>
       </sky-docs-design-guideline>
 
       <sky-docs-design-guideline
-        heading="Start over action"
+        heading="Start-over action"
       >
-        <p>
-          You can include a start over action to let users erase all saved data from the waterfall process. This returns user to the first step or to an earlier point in the workflow if decisions occured before the waterfall progress indicator.
+        <p class="sky-docs-text-block">
+          You can include a start-over action to let users erase all saved data from the waterfall process. This returns users to the first step or to an earlier point in the workflow if decisions occured before the waterfall progress indicator.
         </p>
       </sky-docs-design-guideline>
     </sky-docs-demo-page-section>
@@ -181,26 +181,26 @@
       heading="Behavior & states"
     >
       <sky-docs-design-guideline>
-        <p>
+        <p class="sky-docs-text-block">
           Waterfall progress indicators guide users through one active step at a time. When users complete a step, the progress indicator updates its step indicator and step action to the completed state and updates the next step indicator and step action to the active state. Users can review and edit completed steps, but this does not undo the completed state.
         </p>
-        <p>
+        <p class="sky-docs-text-block">
           The final step summarizes the changes and requests user confirmation. You do not need to include all data that users enter in the summary, but confirmation is required. After users complete the final step, replace the waterfall progress indicator with a page that displays the finished or active state of the system.
         </p>
       </sky-docs-design-guideline>
     </sky-docs-demo-page-section>
-    
+
     <sky-docs-demo-page-section
       heading="Content"
     >
       <sky-docs-design-guideline>
-        <p>
-          Use a waterfall title in place of an ordinary page title to provide context for the overall task. Begin the title with a verb to describe the action that the waterfall steps take when they are all completed, similar to the way modal titles are constructed.
+        <p class="sky-docs-text-block">
+          Use a waterfall title in place of an ordinary page title to provide context for the overall task. Follow the same pattern as modal titles and start the waterfall title with a verb that indicates the action that occurs when users complete the waterfall steps.
         </p>
-        <p>
+        <p class="sky-docs-text-block">
           Step labels in waterfall progress indicators start with a number and concisely describe the objective. Use the <b>&lt;verb> &lt;direct object></b> format. In the label for the last step, describe the cumulative change that occurs at the end of the process.
         </p>
-        <p>
+        <p class="sky-docs-text-block">
           Step action (button) labels closely follow step labels and use the same <b>&lt;verb> &lt;direct object></b> format, but they do not need to be identical. For the first step action label, be generic and conversational (“Get started”), and for completed step actions, use verbs appropriate to post hoc actions (“Change”, “Edit”).
         </p>
       </sky-docs-design-guideline>
@@ -229,7 +229,7 @@
       >
         <ul>
           <li><a href="https://developer.blackbaud.com/skyux/components/modal">Modal</a></li>
-          <li><a href="https://developer.blackbaud.com/skyux/components/progress-indicator/passive-progress-indicator">Passive progress indicator</a></li>
+          <li><a href="https://developer.blackbaud.com/skyux-progress-indicator/docs/passive-indicator">Passive progress indicator</a></li>
           <li><a href="https://developer.blackbaud.com/skyux/components/wizard">Wizard</a></li>
         </ul>
       </sky-docs-design-guideline>
