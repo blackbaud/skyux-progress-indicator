@@ -43,7 +43,9 @@
 <sky-progress-indicator-nav-button
   buttonType="finish"
   [attr.data-test-selector]="'finish-button'"
+  [disabled]="finishDisabled"
   [progressIndicator]="myIndicator"
   (actionClick)="onFinishClick($event)"
+  (click)="onStandardClick()"
 >
 </sky-progress-indicator-nav-button>

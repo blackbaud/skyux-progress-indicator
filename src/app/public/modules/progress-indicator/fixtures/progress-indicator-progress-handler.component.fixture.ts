@@ -27,6 +27,8 @@ export class SkyProgressIndicatorProgressHandlerFixtureComponent {
   })
   public progressIndicator: SkyProgressIndicatorComponent;
 
+  public finishDisabled: boolean = false;
+
   public isLoading = false;
 
   public messageStream = new Subject<SkyProgressIndicatorMessage>();
@@ -38,6 +40,10 @@ export class SkyProgressIndicatorProgressHandlerFixtureComponent {
       args.progressHandler.advance();
       this.isLoading = false;
     });
+  }
+
+  public onStandardClick(): void {
+    return;
   }
 
   public sendMessage(message: SkyProgressIndicatorMessage): void {
