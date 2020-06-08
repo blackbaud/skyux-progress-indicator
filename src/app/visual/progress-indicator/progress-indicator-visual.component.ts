@@ -16,10 +16,13 @@ import {
 import {
   SkyProgressIndicatorActionClickArgs,
   SkyProgressIndicatorChange,
-  SkyProgressIndicatorComponent,
   SkyProgressIndicatorMessage,
   SkyProgressIndicatorMessageType
 } from '../../public/public_api';
+
+import {
+  SkyProgressIndicatorComponent
+} from '../../public/modules/progress-indicator/progress-indicator.component';
 
 import {
   ProgressIndicatorWizardDemoComponent

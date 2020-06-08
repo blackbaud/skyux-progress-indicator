@@ -116,22 +116,24 @@ export class SkyProgressIndicatorNavButtonComponent implements AfterViewInit, On
           this.updateButtonVisibility(change);
         });
     } else {
-      setTimeout(() => {
-        if (!this.progressIndicator) {
-          throw new Error(
-            'The `<sky-progress-indicator-nav-button>` component requires a reference to ' +
-            'the `<sky-progress-indicator>` component it controls. For example:\n' +
-            '<sky-progress-indicator\n' +
-            '  #myProgressIndicator\n' +
-            '>\n' +
-            '</sky-progress-indicator>\n' +
-            '<sky-progress-indicator-nav-button\n' +
-            '  [progressIndicator]="myProgressIndicator"\n' +
-            '>\n' +
-            '</sky-progress-indicator-nav-button>'
-          );
-        }
-      }, 50);
+      if (!this.parentTimeout) {
+        this.parentTimeout = window.setTimeout(() => {
+          if (!this.progressIndicator) {
+            throw new Error(
+              'The `<sky-progress-indicator-nav-button>` component requires a reference to ' +
+              'the `<sky-progress-indicator>` component it controls. For example:\n' +
+              '<sky-progress-indicator\n' +
+              '  #myProgressIndicator\n' +
+              '>\n' +
+              '</sky-progress-indicator>\n' +
+              '<sky-progress-indicator-nav-button\n' +
+              '  [progressIndicator]="myProgressIndicator"\n' +
+              '>\n' +
+              '</sky-progress-indicator-nav-button>'
+            );
+          }
+        }, 50);
+      }
     }
   }
 
@@ -182,6 +184,7 @@ export class SkyProgressIndicatorNavButtonComponent implements AfterViewInit, On
 
   private lastProgressChange: SkyProgressIndicatorChange;
   private ngUnsubscribe = new Subject<void>();
+  private parentTimeout: number;
 
   private _buttonType: SkyProgressIndicatorNavButtonType;
   private _disabled: boolean;
@@ -196,6 +199,8 @@ export class SkyProgressIndicatorNavButtonComponent implements AfterViewInit, On
   public ngAfterViewInit(): void {
     if (!this.progressIndicator && this.parentComponent) {
       this.progressIndicator = this.parentComponent;
+    } else if (!this.progressIndicator) {
+      this.progressIndicator = undefined;
     }
   }
 
