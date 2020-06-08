@@ -1,5 +1,9 @@
 :host {
   &[disabled="true"] {
     pointer-events: none;
+
+    .sky-btn {
+      pointer-events: none;
+    }
   }
 }
