@@ -10,7 +10,8 @@ import {
 } from '../types/progress-indicator-item-status';
 
 /**
- * Specifies a step to include in the progress indicator.
+ * Specifies a step to include in the progress indicator. Each step requires a label,
+ * and you can also specify step details within the `sky-progress-indicator-item` element.
  */
 @Component({
   selector: 'sky-progress-indicator-item',
@@ -21,7 +22,7 @@ import {
 export class SkyProgressIndicatorItemComponent {
 
 /**
- * Specifies the step label to display for a step in the progress indicator.
+ * Specifies a step label for the step in the progress indicator.
  * @required
  */
   @Input()
