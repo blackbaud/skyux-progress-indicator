@@ -30,6 +30,9 @@ import {
 import {
   ProgressIndicatorWizardDemoComponent
 } from './visual/progress-indicator/progress-indicator-horizontal-visual.component';
+import {
+  SkyProgressIndicatorWaterfallDemoFormComponent
+} from './docs/waterfall-indicator/progress-indicator-waterfall-demo-form.component';
 
 @NgModule({
   exports: [
@@ -41,7 +44,8 @@ import {
     SkyProgressIndicatorModule
   ],
   entryComponents: [
-    ProgressIndicatorWizardDemoComponent
+    ProgressIndicatorWizardDemoComponent,
+    SkyProgressIndicatorWaterfallDemoFormComponent
   ],
   providers: [
     {
