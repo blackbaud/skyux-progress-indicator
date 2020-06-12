@@ -30,7 +30,7 @@ import {
 
 @Component({
   selector: 'app-waterfall-indicator-docs',
-  templateUrl: './waterfall-indicator-docs.component.html',
+  templateUrl: './progress-indicator-waterfall-demo.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
