@@ -341,7 +341,11 @@
     </sky-docs-demo-page-section>
 
   </sky-docs-design-guidelines>
-  <sky-docs-code-examples>
+  <sky-docs-code-examples
+    [packageDependencies]="{
+      '@skyux/progress-indicator': '*'
+    }"
+  >
     <sky-docs-code-example heading="Waterfall progress indicator"
       sourceCodePath="src/app/public/plugin-resources/code-examples/waterfall-indicator/basic"></sky-docs-code-example>
   </sky-docs-code-examples>
