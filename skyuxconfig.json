@@ -3,9 +3,20 @@
   "name": "skyux-progress-indicator",
   "mode": "easy",
   "compileMode": "aot",
+  "host": {
+    "frameOptions": {
+      "none": true
+    }
+  },
+  "omnibar": {},
+  "params": {
+    "svcid": {
+      "value": "skyux"
+    }
+  },
   "app": {
     "styles": [
-      "src/app/visual-styles.scss"
+      "@skyux/docs-tools/css/docs-tools.css"
     ]
   },
   "plugins": [
@@ -17,11 +28,6 @@
     },
     "unit": {
       "browserSet": "paranoid"
-    }
-  },
-  "host": {
-    "frameOptions": {
-      "none": true
     }
   }
 }
