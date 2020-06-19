@@ -1,4 +1,5 @@
 import {
+  AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
@@ -51,7 +52,7 @@ import {
   templateUrl: './progress-indicator-nav-button.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SkyProgressIndicatorNavButtonComponent implements OnInit, OnDestroy {
+export class SkyProgressIndicatorNavButtonComponent implements AfterViewInit, OnDestroy {
 
 /**
  * Specifies the label to display on the nav button.
