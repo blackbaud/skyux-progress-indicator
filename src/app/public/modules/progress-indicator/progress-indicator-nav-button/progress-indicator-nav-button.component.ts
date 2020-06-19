@@ -1,11 +1,11 @@
 import {
+  AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   EventEmitter,
   Input,
   OnDestroy,
-  OnInit,
   Optional,
   Output
 } from '@angular/core';
@@ -116,7 +116,51 @@ export class SkyProgressIndicatorNavButtonComponent implements OnInit, OnDestroy
    * @required
    */
   @Input()
-  public progressIndicator: SkyProgressIndicatorComponent;
+  public set progressIndicator(value: SkyProgressIndicatorComponent) {
+    this._progressIndicator = value;
+
+    if (value) {
+      if (this.buttonType === 'finish') {
+        // The `hasFinishButton` field was added to support legacy API.
+        // Some implementations only include a next button; we cannot
+        // assume that every implementation includes both a finish button and a next button.
+        this._progressIndicator.hasFinishButton = true;
+      }
+
+      this._progressIndicator.progressChanges
+        .pipe(
+          distinctUntilChanged(),
+          takeUntil(this.ngUnsubscribe)
+        )
+        .subscribe((change: SkyProgressIndicatorChange) => {
+          this.lastProgressChange = change;
+          this.updateButtonVisibility(change);
+        });
+    } else {
+      if (!this.parentTimeout) {
+        this.parentTimeout = window.setTimeout(() => {
+          if (!this.progressIndicator) {
+            throw new Error(
+              'The `<sky-progress-indicator-nav-button>` component requires a reference to ' +
+              'the `<sky-progress-indicator>` component it controls. For example:\n' +
+              '<sky-progress-indicator\n' +
+              '  #myProgressIndicator\n' +
+              '>\n' +
+              '</sky-progress-indicator>\n' +
+              '<sky-progress-indicator-nav-button\n' +
+              '  [progressIndicator]="myProgressIndicator"\n' +
+              '>\n' +
+              '</sky-progress-indicator-nav-button>'
+            );
+          }
+        }, 50);
+      }
+    }
+  }
+
+  public get progressIndicator(): SkyProgressIndicatorComponent {
+    return this._progressIndicator;
+  }
 
   /**
    * Fires when users select the nav button and emits a `SkyProgressIndicatorActionClickArgs`
@@ -166,52 +210,24 @@ export class SkyProgressIndicatorNavButtonComponent implements OnInit, OnDestroy
 
   private lastProgressChange: SkyProgressIndicatorChange;
   private ngUnsubscribe = new Subject<void>();
+  private parentTimeout: number;
 
   private _buttonType: SkyProgressIndicatorNavButtonType;
   private _disabled: boolean;
   private _isVisible: boolean;
+  private _progressIndicator: SkyProgressIndicatorComponent;
 
   constructor(
     private changeDetector: ChangeDetectorRef,
     @Optional() private parentComponent: SkyProgressIndicatorComponent
   ) { }
 
-  public ngOnInit(): void {
-    if (!this.progressIndicator) {
-      if (!this.parentComponent) {
-        throw new Error(
-          'The `<sky-progress-indicator-nav-button>` component requires a reference to ' +
-          'the `<sky-progress-indicator>` component it controls. For example:\n' +
-          '<sky-progress-indicator\n' +
-          '  #myProgressIndicator\n' +
-          '>\n' +
-          '</sky-progress-indicator>\n' +
-          '<sky-progress-indicator-nav-button\n' +
-          '  [progressIndicator]="myProgressIndicator"\n' +
-          '>\n' +
-          '</sky-progress-indicator-nav-button>'
-        );
-      }
-
+  public ngAfterViewInit(): void {
+    if (!this.progressIndicator && this.parentComponent) {
       this.progressIndicator = this.parentComponent;
+    } else if (!this.progressIndicator) {
+      this.progressIndicator = undefined;
     }
-
-    if (this.buttonType === 'finish') {
-      // The `hasFinishButton` field was added to support legacy API.
-      // Some implementations only include a next button; we cannot
-      // assume that every implementation includes both a finish button and a next button.
-      this.progressIndicator.hasFinishButton = true;
-    }
-
-    this.progressIndicator.progressChanges
-      .pipe(
-        distinctUntilChanged(),
-        takeUntil(this.ngUnsubscribe)
-      )
-      .subscribe((change: SkyProgressIndicatorChange) => {
-        this.lastProgressChange = change;
-        this.updateButtonVisibility(change);
-      });
   }
 
   public ngOnDestroy(): void {
@@ -228,23 +244,23 @@ export class SkyProgressIndicatorNavButtonComponent implements OnInit, OnDestroy
 
     switch (this.buttonType) {
       case 'finish':
-      type = SkyProgressIndicatorMessageType.Finish;
-      break;
+        type = SkyProgressIndicatorMessageType.Finish;
+        break;
 
       case 'next':
-      type = SkyProgressIndicatorMessageType.Progress;
-      break;
+        type = SkyProgressIndicatorMessageType.Progress;
+        break;
 
       case 'previous':
-      type = SkyProgressIndicatorMessageType.Regress;
-      break;
+        type = SkyProgressIndicatorMessageType.Regress;
+        break;
 
       case 'reset':
-      type = SkyProgressIndicatorMessageType.Reset;
-      break;
+        type = SkyProgressIndicatorMessageType.Reset;
+        break;
 
       default:
-      break;
+        break;
     }
 
     // If the consumer has subscribed to the `actionClick` event,
