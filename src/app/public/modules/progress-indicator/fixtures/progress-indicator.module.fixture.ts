@@ -7,6 +7,10 @@ import {
 } from '@angular/core';
 
 import {
+  SkyPageModule
+} from '@skyux/layout';
+
+import {
   SkyProgressIndicatorModule
 } from '../progress-indicator.module';
 
@@ -25,6 +29,7 @@ import {
   ],
   imports: [
     CommonModule,
+    SkyPageModule,
     SkyProgressIndicatorModule
   ],
   exports: [

@@ -685,6 +685,35 @@ describe('Progress indicator component', function () {
        */
       expect(() => { tick(100); }).toThrowError();
     }));
+
+    it('should be accessible', async(() => {
+      fixture.detectChanges();
+      componentInstance.sendMessage({
+        type: SkyProgressIndicatorMessageType.GoTo,
+        data: {
+          activeIndex: 1
+        }
+      });
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        expect(fixture.nativeElement).toBeAccessible();
+      });
+    }));
+
+    it('should be accessible with disabled buttons', async(() => {
+      fixture.componentInstance.disabled = true;
+      fixture.detectChanges();
+      componentInstance.sendMessage({
+        type: SkyProgressIndicatorMessageType.GoTo,
+        data: {
+          activeIndex: 1
+        }
+      });
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        expect(fixture.nativeElement).toBeAccessible();
+      });
+    }));
   });
 
   describe('Progress handler', function () {
