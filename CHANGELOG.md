@@ -1,6 +1,6 @@
 # 4.0.1 (2020-08-05)
 
-- Fix the progress indicator component to not error when the progress indicator and its external navigation buttons are hidden at the same time. [#40](https://github.com/blackbaud/skyux-progress-indicator/pull/46)
+- Fixed the progress indicator component to prevent errors when the progress indicator and its external navigation buttons are hidden at the same time. [#40](https://github.com/blackbaud/skyux-progress-indicator/pull/46)
 
 # 4.0.0 (2020-05-20)
 
