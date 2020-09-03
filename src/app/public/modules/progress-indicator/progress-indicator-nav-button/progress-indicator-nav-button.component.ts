@@ -44,6 +44,10 @@ import {
   SkyProgressIndicatorComponent
 } from '../progress-indicator.component';
 
+/**
+ * Displays a button to navigate the steps in modal wizards. We recommend against using it in
+ * passive progress indicators and waterfall progress indicators.
+ */
 @Component({
   selector: 'sky-progress-indicator-nav-button',
   templateUrl: './progress-indicator-nav-button.component.html',
@@ -52,9 +56,18 @@ import {
 })
 export class SkyProgressIndicatorNavButtonComponent implements AfterViewInit, OnDestroy {
 
+  /**
+   * Specifies the label to display on the nav button.
+   * @default "Next"
+   */
   @Input()
   public buttonText: string;
 
+  /**
+   * Specifies the type of nav button to include.
+   * The valid options are `finish`, `next`, `previous`, and `reset`.
+   * @default "next"
+   */
   @Input()
   public set buttonType(value: SkyProgressIndicatorNavButtonType) {
     this._buttonType = value;
@@ -69,13 +82,15 @@ export class SkyProgressIndicatorNavButtonComponent implements AfterViewInit, On
   }
 
   /**
-   * The binding here ensures that we place a native HTML disabled attribute on the host element.
-   * Without this it is not possible to stop click events on the parent component based on an inner
-   * variable. The onClick stopPropogation handles this case when the button is enabled.
+   * Indicates whether to disable the nav button.
+   * @default "false"
    */
   @Input()
   @HostBinding('attr.disabled')
   public set disabled(value: boolean) {
+    // The binding here ensures that we place a native HTML disabled attribute on the host element.
+    // Without this it is not possible to stop click events on the parent component based on an
+    // inner variable. The onClick stopPropogation handles this case when the button is enabled.
     this._disabled = value;
     this.changeDetector.markForCheck();
   }
@@ -102,6 +117,10 @@ export class SkyProgressIndicatorNavButtonComponent implements AfterViewInit, On
     return this._disabled || false;
   }
 
+  /**
+   * Specifies the progress indicator component to associate with the nav button.
+   * @required
+   */
   @Input()
   public set progressIndicator(value: SkyProgressIndicatorComponent) {
     this._progressIndicator = value;
@@ -149,6 +168,11 @@ export class SkyProgressIndicatorNavButtonComponent implements AfterViewInit, On
     return this._progressIndicator;
   }
 
+  /**
+   * Fires when users select the nav button and emits a `SkyProgressIndicatorActionClickArgs`
+   * object that is passed into the callback function to allow consumers to decide whether
+   * the button’s action should complete successfully.
+   */
   @Output()
   public actionClick = new EventEmitter<SkyProgressIndicatorActionClickArgs>();
 

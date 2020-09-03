@@ -38,6 +38,7 @@ describe('Progress indicator', function () {
     it('should match previous screenshot (xs)', function (done) {
       SkyHostBrowser.setWindowBreakpoint('xs');
 
+      SkyHostBrowser.scrollTo(`#${screenshotElementId}`);
       expect(`#${screenshotElementId}`).toMatchBaselineScreenshot(done, {
         screenshotName: 'progress-indicator-vertical-xs'
       });

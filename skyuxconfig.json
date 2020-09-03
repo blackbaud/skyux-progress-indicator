@@ -3,9 +3,21 @@
   "name": "skyux-progress-indicator",
   "mode": "easy",
   "compileMode": "aot",
+  "host": {
+    "url": "https://developer.blackbaud.com",
+    "frameOptions": {
+      "none": true
+    }
+  },
+  "omnibar": {},
+  "params": {
+    "svcid": {
+      "value": "skyux"
+    }
+  },
   "app": {
     "styles": [
-      "src/app/visual-styles.scss"
+      "@skyux/docs-tools/css/docs-tools.css"
     ]
   },
   "plugins": [
@@ -19,9 +31,16 @@
       "browserSet": "paranoid"
     }
   },
-  "host": {
-    "frameOptions": {
-      "none": true
+  "pipelineSettings": {
+    "vsts": {
+      "testSettings": {
+        "e2e": {
+          "browserSet": false
+        },
+        "unit": {
+          "browserSet": false
+        }
+      }
     }
   }
 }
