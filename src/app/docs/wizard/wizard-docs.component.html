@@ -1,0 +1,33 @@
+<sky-docs-demo-page
+  moduleName="SkyProgressIndicatorModule"
+  moduleSourceCodePath="src/app/public/modules/progress-indicator/"
+  pageTitle="Wizard"
+>
+
+<sky-docs-demo-page-summary>
+  <p>
+    Wizards guide users through pre-defined steps in a particular order to represent a series of related decisions in a user’s direct workflow. Wizards illustrate the step-wise nature of tasks and reinforce progress toward final goals as users complete steps. Wizards are most useful when users must perform steps in a particular order.
+  </p>
+
+  <sky-alert alertType="info">
+    This wizard implementation replaces a previous version that was deprecated because of limitations that interfered with complex configuration tasks. The deprecated wizard used the <a routerLink="/components/tabs">tabs module</a> within a modal component and set <sky-code>tabStyle="wizard"</sky-code> on the <sky-code>sky-tabset</sky-code> component to guide users through a set of pre-defined steps. We recommend that you create wizards with the progress indicator component instead of this deprectated implementation.
+  </sky-alert>
+</sky-docs-demo-page-summary>
+
+  <sky-docs-demo>
+    <button
+      type="button"
+      class="sky-btn sky-btn-default"
+      (click)="openWizard()">
+      Open wizard
+    </button>
+  </sky-docs-demo>
+  <sky-docs-code-examples
+    [packageDependencies]="{
+      '@skyux/progress-indicator': '*'
+    }"
+  >
+    <sky-docs-code-example heading="Wizard"
+      sourceCodePath="src/app/public/plugin-resources/code-examples/wizard/basic"></sky-docs-code-example>
+  </sky-docs-code-examples>
+</sky-docs-demo-page>
