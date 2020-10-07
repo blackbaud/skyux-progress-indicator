@@ -35,9 +35,9 @@ export class WizardDemoModalComponent implements OnInit {
   public get requirementsMet(): boolean {
     switch (this.activeIndex) {
       case 0:
-        return !!this.myForm.get('requiredValue1');
+        return !!this.myForm.get('requiredValue1').value;
       case 1:
-        return !!this.myForm.get('requiredValue2');
+        return !!this.myForm.get('requiredValue2').value;
       default:
         return false;
     }
