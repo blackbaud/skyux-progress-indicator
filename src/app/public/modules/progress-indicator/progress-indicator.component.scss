@@ -39,6 +39,12 @@
   }
 }
 
+::ng-deep .sky-popover {
+  ::ng-deep .sky-progress-indicator-mode-vertical {
+      min-width: auto;
+  }
+}
+
 .sky-progress-indicator-mode-horizontal {
   /**
    * Overwrite item styles for vertical display mode.
