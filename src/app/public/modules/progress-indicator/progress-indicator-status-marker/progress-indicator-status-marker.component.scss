@@ -137,6 +137,12 @@
         width: 17px;
       }
     }
+    &.sky-progress-indicator-status-marker-mode-horizontal {
+      .sky-progress-indicator-status-marker-icon {
+        height: 17px;
+        top: 1px;
+      }
+    }
   }
 
   .sky-progress-indicator-status-marker-icon {
