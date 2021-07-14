@@ -1,3 +1,9 @@
+# 5.0.0-beta.0 (2021-07-14)
+
+- Initial beta release.
+- Added support for `@angular/core@^12`. [#68](https://github.com/blackbaud/skyux-progress-indicator/pull/68)
+- Added support for `5.0.0-beta.*` versions of SKY UX component libraries. [#68](https://github.com/blackbaud/skyux-progress-indicator/pull/68)
+
 # 4.1.0 (2021-04-21)
 
 - Added modern theme styles to the progress indicator component. [#66](https://github.com/blackbaud/skyux-progress-indicator/pull/66)
