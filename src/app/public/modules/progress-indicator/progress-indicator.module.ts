@@ -7,10 +7,6 @@ import {
 } from '@angular/common';
 
 import {
-  SkyAppWindowRef
-} from '@skyux/core';
-
-import {
   SkyI18nModule
 } from '@skyux/i18n';
 
@@ -73,9 +69,6 @@ import {
     SkyProgressIndicatorResetButtonComponent,
     SkyProgressIndicatorStatusMarkerComponent,
     SkyProgressIndicatorTitleComponent
-  ],
-  providers: [
-    SkyAppWindowRef
   ]
 })
 export class SkyProgressIndicatorModule { }
