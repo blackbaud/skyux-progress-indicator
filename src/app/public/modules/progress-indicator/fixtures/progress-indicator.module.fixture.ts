@@ -7,6 +7,10 @@ import {
 } from '@angular/core';
 
 import {
+  SkyProgressIndicatorForRootCompatModule
+} from '../../shared/progress-indicator-for-root-compat.module';
+
+import {
   SkyProgressIndicatorModule
 } from '../progress-indicator.module';
 
@@ -25,6 +29,7 @@ import {
   ],
   imports: [
     CommonModule,
+    SkyProgressIndicatorForRootCompatModule,
     SkyProgressIndicatorModule
   ],
   exports: [

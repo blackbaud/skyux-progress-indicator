@@ -33,6 +33,10 @@ import {
 } from '@skyux/router';
 
 import {
+  SkyProgressIndicatorForRootCompatModule
+} from './public/modules/shared/progress-indicator-for-root-compat.module';
+
+import {
   SkyProgressIndicatorModule
 } from './public/public_api';
 
@@ -48,6 +52,9 @@ import {
 } from './docs/wizard/wizard-docs-demo-modal.component';
 
 @NgModule({
+  imports: [
+    SkyProgressIndicatorForRootCompatModule
+  ],
   exports: [
     SkyAlertModule,
     SkyAppLinkModule,
