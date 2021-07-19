@@ -20,16 +20,8 @@ import {
 } from 'rxjs';
 
 import {
-  SkyProgressIndicatorDisplayModeType
-} from '../types/progress-indicator-display-mode-type';
-
-import {
   SkyProgressIndicatorItemStatus
 } from '../types/progress-indicator-item-status';
-
-import {
-  SkyProgressIndicatorDisplayMode
-} from '../types/progress-indicator-mode';
 
 /**
  * Specifies the content to display in the status marker.
