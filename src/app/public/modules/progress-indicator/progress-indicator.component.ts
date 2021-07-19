@@ -147,7 +147,10 @@ export class SkyProgressIndicatorComponent implements OnInit, AfterContentInit, 
     return classNames.join(' ');
   }
 
-  public get displayModeResolved(): SkyProgressIndicatorDisplayModeType {
+  /**
+   * @internal Returns the newly-supported string union type value to be used by the template.
+   */
+  public get displayModeResolved(): 'vertical' | 'horizontal' {
     switch (this.displayMode) {
       case SkyProgressIndicatorDisplayMode.Vertical:
       case 'vertical':

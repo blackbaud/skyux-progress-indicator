@@ -44,11 +44,11 @@ import {
 export class SkyProgressIndicatorStatusMarkerComponent implements OnDestroy {
 
   @Input()
-  public set displayMode(value: SkyProgressIndicatorDisplayModeType) {
+  public set displayMode(value: 'vertical' | 'horizontal') {
     this._displayMode = value;
   }
 
-  public get displayMode(): SkyProgressIndicatorDisplayModeType {
+  public get displayMode(): 'vertical' | 'horizontal' {
     if (this._displayMode === undefined) {
       return 'vertical';
     }
@@ -62,19 +62,9 @@ export class SkyProgressIndicatorStatusMarkerComponent implements OnDestroy {
     this.changeDetector.markForCheck();
   }
 
-  public get displayModeResolved(): SkyProgressIndicatorDisplayModeType {
-    switch (this.displayMode) {
-      case SkyProgressIndicatorDisplayMode.Vertical:
-      case 'vertical':
-        return 'vertical';
-      default:
-        return 'horizontal';
-    }
-  }
-
   public get cssClassNames(): string {
     const classNames = [
-      `sky-progress-indicator-status-marker-mode-${this.displayModeResolved}`,
+      `sky-progress-indicator-status-marker-mode-${this.displayMode}`,
       `sky-progress-indicator-status-marker-status-${this.statusName}`
     ];
 
@@ -108,7 +98,7 @@ export class SkyProgressIndicatorStatusMarkerComponent implements OnDestroy {
 
   private ngUnsubscribe = new Subject<void>();
 
-  private _displayMode: SkyProgressIndicatorDisplayModeType;
+  private _displayMode: 'vertical' | 'horizontal';
   private _status: SkyProgressIndicatorItemStatus;
 
   constructor(
