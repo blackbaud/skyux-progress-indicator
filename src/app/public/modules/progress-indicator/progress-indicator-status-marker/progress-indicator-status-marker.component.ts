@@ -20,12 +20,16 @@ import {
 } from 'rxjs';
 
 import {
-  SkyProgressIndicatorDisplayMode
-} from '../types/progress-indicator-mode';
+  SkyProgressIndicatorDisplayModeType
+} from '../types/progress-indicator-display-mode-type';
 
 import {
   SkyProgressIndicatorItemStatus
 } from '../types/progress-indicator-item-status';
+
+import {
+  SkyProgressIndicatorDisplayMode
+} from '../types/progress-indicator-mode';
 
 /**
  * Specifies the content to display in the status marker.
@@ -40,13 +44,13 @@ import {
 export class SkyProgressIndicatorStatusMarkerComponent implements OnDestroy {
 
   @Input()
-  public set displayMode(value: SkyProgressIndicatorDisplayMode) {
+  public set displayMode(value: SkyProgressIndicatorDisplayModeType) {
     this._displayMode = value;
   }
 
-  public get displayMode(): SkyProgressIndicatorDisplayMode {
+  public get displayMode(): SkyProgressIndicatorDisplayModeType {
     if (this._displayMode === undefined) {
-      return SkyProgressIndicatorDisplayMode.Vertical;
+      return 'vertical';
     }
 
     return this._displayMode;
@@ -58,21 +62,23 @@ export class SkyProgressIndicatorStatusMarkerComponent implements OnDestroy {
     this.changeDetector.markForCheck();
   }
 
+  public get displayModeResolved(): SkyProgressIndicatorDisplayModeType {
+    switch (this.displayMode) {
+      case SkyProgressIndicatorDisplayMode.Vertical:
+      case 'vertical':
+        return 'vertical';
+      default:
+        return 'horizontal';
+    }
+  }
+
   public get cssClassNames(): string {
     const classNames = [
-      `sky-progress-indicator-status-marker-mode-${this.displayModeName}`,
+      `sky-progress-indicator-status-marker-mode-${this.displayModeResolved}`,
       `sky-progress-indicator-status-marker-status-${this.statusName}`
     ];
 
     return classNames.join(' ');
-  }
-
-  public get displayModeName(): string {
-    if (this.displayMode === SkyProgressIndicatorDisplayMode.Vertical) {
-      return 'vertical';
-    }
-
-    return 'horizontal';
   }
 
   public get statusName(): string {
@@ -102,7 +108,7 @@ export class SkyProgressIndicatorStatusMarkerComponent implements OnDestroy {
 
   private ngUnsubscribe = new Subject<void>();
 
-  private _displayMode: SkyProgressIndicatorDisplayMode;
+  private _displayMode: SkyProgressIndicatorDisplayModeType;
   private _status: SkyProgressIndicatorItemStatus;
 
   constructor(

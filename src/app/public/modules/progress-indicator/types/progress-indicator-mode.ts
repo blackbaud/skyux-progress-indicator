@@ -1,3 +1,7 @@
+/**
+ * @deprecated Use `SkyProgressIndicatorDisplayModeType` instead.
+ * @internal
+ */
 export enum SkyProgressIndicatorDisplayMode {
 
   /**

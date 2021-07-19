@@ -35,6 +35,10 @@ import {
 } from './fixtures/progress-indicator.module.fixture';
 
 import {
+  SkyProgressIndicatorDisplayModeType
+} from './types/progress-indicator-display-mode-type';
+
+import {
   SkyProgressIndicatorDisplayMode
 } from './types/progress-indicator-mode';
 
@@ -164,14 +168,19 @@ describe('Progress indicator component', function () {
   }));
 
   it('should use horizontal display if set', fakeAsync(function () {
-    componentInstance.displayMode = SkyProgressIndicatorDisplayMode.Horizontal;
+    function validate(displayMode: SkyProgressIndicatorDisplayModeType): void {
+      componentInstance.displayMode = displayMode;
 
-    detectChanges();
+      detectChanges();
 
-    const element = fixture.nativeElement;
+      const element = fixture.nativeElement;
 
-    expect(element.querySelector('.sky-progress-indicator-horizontal-status-markers')).toBeTruthy();
-    expect(element.querySelector('.sky-progress-indicator-item .sky-progress-indicator-status-marker')).toBeFalsy();
+      expect(element.querySelector('.sky-progress-indicator-horizontal-status-markers')).toBeTruthy();
+      expect(element.querySelector('.sky-progress-indicator-item .sky-progress-indicator-status-marker')).toBeFalsy();
+    }
+
+    validate(SkyProgressIndicatorDisplayMode.Horizontal);
+    validate('horizontal');
   }));
 
   it('should use starting index if set', fakeAsync(function () {
@@ -190,14 +199,19 @@ describe('Progress indicator component', function () {
   }));
 
   it('should show step number in heading', fakeAsync(function () {
-    componentInstance.displayMode = SkyProgressIndicatorDisplayMode.Vertical;
+    function validate(displayMode: SkyProgressIndicatorDisplayModeType): void {
+      componentInstance.displayMode = displayMode;
 
-    detectChanges();
+      detectChanges();
 
-    const stepHeadingElements = getStepHeadingElements();
-    const headingElement = stepHeadingElements.item(0);
+      const stepHeadingElements = getStepHeadingElements();
+      const headingElement = stepHeadingElements.item(0);
 
-    expect(headingElement.textContent.trim()).toEqual('1 - Do the first thing');
+      expect(headingElement.textContent.trim()).toEqual('1 - Do the first thing');
+    }
+
+    validate(SkyProgressIndicatorDisplayMode.Vertical);
+    validate('vertical');
   }));
 
   it('should handle empty progress indicator', fakeAsync(function () {
@@ -320,7 +334,7 @@ describe('Progress indicator component', function () {
     }));
 
     it('should not use passive mode if set for horizontal display', fakeAsync(function () {
-      componentInstance.displayMode = SkyProgressIndicatorDisplayMode.Horizontal;
+      componentInstance.displayMode = 'horizontal';
 
       detectChanges();
 
@@ -775,7 +789,7 @@ describe('Progress indicator component', function () {
     }));
 
     it('should be accessible in horizontal mode', async(function () {
-      componentInstance.displayMode = SkyProgressIndicatorDisplayMode.Horizontal;
+      componentInstance.displayMode = 'horizontal';
 
       fixture.detectChanges();
 

@@ -38,8 +38,8 @@ import {
 } from '../types/progress-indicator-message-type';
 
 import {
-  SkyProgressIndicatorDisplayMode
-} from '../types/progress-indicator-mode';
+  SkyProgressIndicatorDisplayModeType
+} from '../types/progress-indicator-display-mode-type';
 
 import {
   SkyProgressIndicatorNavButtonType
@@ -111,7 +111,7 @@ export class SkyProgressIndicatorFixtureComponent {
   public navButtonElements: QueryList<ElementRef>;
 
   // Progress indicator component inputs.
-  public displayMode: SkyProgressIndicatorDisplayMode;
+  public displayMode: SkyProgressIndicatorDisplayModeType;
   public isPassive: boolean;
   public messageStream = new Subject<SkyProgressIndicatorMessage | SkyProgressIndicatorMessageType>();
   public startingIndex: number;
