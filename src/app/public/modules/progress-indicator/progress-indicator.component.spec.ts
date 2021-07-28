@@ -154,7 +154,7 @@ describe('Progress indicator component', function () {
   it('should set defaults', fakeAsync(function () {
     detectChanges();
 
-    expect(progressIndicator.displayMode).toEqual(SkyProgressIndicatorDisplayMode.Vertical);
+    expect(progressIndicator.displayMode).toEqual('vertical');
     expect(progressIndicator.isPassive).toEqual(false);
     expect(progressIndicator.startingIndex).toEqual(0);
   }));

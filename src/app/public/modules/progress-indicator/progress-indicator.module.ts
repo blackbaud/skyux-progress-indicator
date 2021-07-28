@@ -67,7 +67,6 @@ import {
     SkyProgressIndicatorItemComponent,
     SkyProgressIndicatorNavButtonComponent,
     SkyProgressIndicatorResetButtonComponent,
-    SkyProgressIndicatorStatusMarkerComponent,
     SkyProgressIndicatorTitleComponent
   ]
 })
