@@ -38,6 +38,10 @@ import {
 } from './types/progress-indicator-mode';
 
 import {
+  SkyProgressIndicatorDisplayModeType
+} from './types/progress-indicator-display-mode-type';
+
+import {
   SkyProgressIndicatorItemStatus
 } from './types/progress-indicator-item-status';
 
@@ -63,16 +67,16 @@ export class SkyProgressIndicatorComponent implements OnInit, AfterContentInit, 
  * and [waterfall progress indicators](https://developer.blackbaud.com/skyux/components/progress-indicator/waterfall-progress-indicator),
  * use the vertical display mode. For [modal wizards](https://developer.blackbaud.com/skyux/components/wizard),
  * use the horizontal display mode.
- * @default vertical
+ * @default 'vertical'
  */
   @Input()
-  public set displayMode(value: SkyProgressIndicatorDisplayMode) {
+  public set displayMode(value: SkyProgressIndicatorDisplayModeType) {
     this._displayMode = value;
   }
 
-  public get displayMode(): SkyProgressIndicatorDisplayMode {
+  public get displayMode(): SkyProgressIndicatorDisplayModeType {
     if (this._displayMode === undefined) {
-      return SkyProgressIndicatorDisplayMode.Vertical;
+      return 'vertical';
     }
 
     return this._displayMode;
@@ -90,7 +94,7 @@ export class SkyProgressIndicatorComponent implements OnInit, AfterContentInit, 
 
   public get isPassive(): boolean {
     // Currently, passive mode is not supported for horizontal displays.
-    if (this.displayMode === SkyProgressIndicatorDisplayMode.Horizontal) {
+    if (this.displayModeResolved === 'horizontal') {
       return false;
     }
 
@@ -133,7 +137,7 @@ export class SkyProgressIndicatorComponent implements OnInit, AfterContentInit, 
 
   public get cssClassNames(): string {
     const classNames = [
-      `sky-progress-indicator-mode-${this.displayModeName}`
+      `sky-progress-indicator-mode-${this.displayModeResolved}`
     ];
 
     if (this.isPassive) {
@@ -143,12 +147,18 @@ export class SkyProgressIndicatorComponent implements OnInit, AfterContentInit, 
     return classNames.join(' ');
   }
 
-  public get displayModeName(): string {
-    if (this.displayMode === SkyProgressIndicatorDisplayMode.Vertical) {
-      return 'vertical';
+  /**
+   * Returns the newly-supported string union type value to be used by the template.
+   * @internal
+   */
+  public get displayModeResolved(): 'vertical' | 'horizontal' {
+    switch (this.displayMode) {
+      case SkyProgressIndicatorDisplayMode.Vertical:
+      case 'vertical':
+        return 'vertical';
+      default:
+        return 'horizontal';
     }
-
-    return 'horizontal';
   }
 
   public get hasFinishButton(): boolean {
@@ -191,7 +201,7 @@ export class SkyProgressIndicatorComponent implements OnInit, AfterContentInit, 
   private ngUnsubscribe = new Subject<void>();
 
   private _activeIndex: number;
-  private _displayMode: SkyProgressIndicatorDisplayMode;
+  private _displayMode: SkyProgressIndicatorDisplayModeType;
   private _hasFinishButton: boolean;
   private _isPassive: boolean;
   private _messageStream = new Subject<SkyProgressIndicatorMessage | SkyProgressIndicatorMessageType>();
@@ -289,7 +299,7 @@ export class SkyProgressIndicatorComponent implements OnInit, AfterContentInit, 
 
     const activeIndex = this.activeIndex;
     const isPassive = this.isPassive;
-    const isVertical = (this.displayMode === SkyProgressIndicatorDisplayMode.Vertical);
+    const isVertical = (this.displayModeResolved === 'vertical');
 
     this.itemComponents.forEach((component, i) => {
 

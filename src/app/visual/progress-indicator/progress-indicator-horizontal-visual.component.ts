@@ -9,7 +9,7 @@ import {
 
 import {
   SkyProgressIndicatorChange,
-  SkyProgressIndicatorDisplayMode
+  SkyProgressIndicatorDisplayModeType
 } from '../../public/public_api';
 
 @Component({
@@ -20,7 +20,7 @@ import {
 export class ProgressIndicatorWizardVisualComponent {
 
   public title = 'Progress indicator wizard example';
-  public displayMode = SkyProgressIndicatorDisplayMode.Horizontal;
+  public displayMode: SkyProgressIndicatorDisplayModeType = 'horizontal';
 
   constructor(
     public instance: SkyModalInstance

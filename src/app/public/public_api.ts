@@ -2,6 +2,7 @@ export * from './modules/progress-indicator/progress-indicator.module';
 export * from './modules/progress-indicator/types/progress-indicator-action-click-args';
 export * from './modules/progress-indicator/types/progress-indicator-action-click-progress-handler';
 export * from './modules/progress-indicator/types/progress-indicator-change';
+export * from './modules/progress-indicator/types/progress-indicator-display-mode-type';
 export * from './modules/progress-indicator/types/progress-indicator-item-status';
 export * from './modules/progress-indicator/types/progress-indicator-message';
 export * from './modules/progress-indicator/types/progress-indicator-message-type';

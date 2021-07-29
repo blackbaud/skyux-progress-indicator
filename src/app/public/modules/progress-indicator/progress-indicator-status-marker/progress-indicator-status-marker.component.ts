@@ -20,10 +20,6 @@ import {
 } from 'rxjs';
 
 import {
-  SkyProgressIndicatorDisplayMode
-} from '../types/progress-indicator-mode';
-
-import {
   SkyProgressIndicatorItemStatus
 } from '../types/progress-indicator-item-status';
 
@@ -40,13 +36,13 @@ import {
 export class SkyProgressIndicatorStatusMarkerComponent implements OnDestroy {
 
   @Input()
-  public set displayMode(value: SkyProgressIndicatorDisplayMode) {
+  public set displayMode(value: 'vertical' | 'horizontal') {
     this._displayMode = value;
   }
 
-  public get displayMode(): SkyProgressIndicatorDisplayMode {
+  public get displayMode(): 'vertical' | 'horizontal' {
     if (this._displayMode === undefined) {
-      return SkyProgressIndicatorDisplayMode.Vertical;
+      return 'vertical';
     }
 
     return this._displayMode;
@@ -60,19 +56,11 @@ export class SkyProgressIndicatorStatusMarkerComponent implements OnDestroy {
 
   public get cssClassNames(): string {
     const classNames = [
-      `sky-progress-indicator-status-marker-mode-${this.displayModeName}`,
+      `sky-progress-indicator-status-marker-mode-${this.displayMode}`,
       `sky-progress-indicator-status-marker-status-${this.statusName}`
     ];
 
     return classNames.join(' ');
-  }
-
-  public get displayModeName(): string {
-    if (this.displayMode === SkyProgressIndicatorDisplayMode.Vertical) {
-      return 'vertical';
-    }
-
-    return 'horizontal';
   }
 
   public get statusName(): string {
@@ -102,7 +90,7 @@ export class SkyProgressIndicatorStatusMarkerComponent implements OnDestroy {
 
   private ngUnsubscribe = new Subject<void>();
 
-  private _displayMode: SkyProgressIndicatorDisplayMode;
+  private _displayMode: 'vertical' | 'horizontal';
   private _status: SkyProgressIndicatorItemStatus;
 
   constructor(
