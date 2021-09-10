@@ -10,11 +10,6 @@ import {
 } from '@skyux/modals';
 
 import {
-  SkyThemeService,
-  SkyThemeSettings
-} from '@skyux/theme';
-
-import {
   Subject
 } from 'rxjs';
 
@@ -61,8 +56,7 @@ export class ProgressIndicatorVisualComponent implements OnDestroy {
 
   constructor(
     private modalService: SkyModalService,
-    private changeDetector: ChangeDetectorRef,
-    private themeSvc: SkyThemeService
+    private changeDetector: ChangeDetectorRef
   ) { }
 
   public ngOnDestroy(): void {
@@ -118,9 +112,5 @@ export class ProgressIndicatorVisualComponent implements OnDestroy {
 
   public toggleProgressIndicator(): void {
     this.showElement = !this.showElement;
-  }
-
-  public themeSettingsChange(themeSettings: SkyThemeSettings): void {
-    this.themeSvc.setTheme(themeSettings);
   }
 }

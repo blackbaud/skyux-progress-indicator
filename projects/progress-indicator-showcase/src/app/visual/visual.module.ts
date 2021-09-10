@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 
-import { SkyDocsToolsModule } from '@skyux/docs-tools';
+import { SkyE2eThemeSelectorModule } from '@skyux/e2e-client';
+
 import { SkyModalModule } from '@skyux/modals';
 import { SkyPopoverModule } from '@skyux/popovers';
 
@@ -22,7 +23,7 @@ import { VisualComponent } from './visual.component';
   imports: [
     NoopAnimationsModule,
     RouterModule,
-    SkyDocsToolsModule,
+    SkyE2eThemeSelectorModule,
     SkyModalModule,
     SkyPopoverModule,
     SkyProgressIndicatorModule
