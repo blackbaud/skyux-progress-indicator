@@ -1,3 +1,7 @@
+# 5.0.0-beta.3 (2021-09-22)
+
+- Updated the peer dependencies. [#74](https://github.com/blackbaud/skyux-progress-indicator/pull/74)
+
 # 5.0.0-beta.2 (2021-09-03)
 
 - Migrated to Angular CLI. [#71](https://github.com/blackbaud/skyux-progress-indicator/pull/71)
