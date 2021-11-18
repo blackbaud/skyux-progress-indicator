@@ -1,12 +1,8 @@
 <sky-e2e-theme-selector></sky-e2e-theme-selector>
 
-<h2>
-  Vertical mode (default)
-</h2>
+<h2>Vertical mode (default)</h2>
 
-<div
-  class="app-screenshot"
->
+<div class="app-screenshot">
   <sky-progress-indicator
     id="screenshot-progress-indicator-vertical"
     [messageStream]="messageStream"
@@ -18,42 +14,25 @@
       Setup my connection
     </sky-progress-indicator-title>
 
-    <sky-progress-indicator-item
-      title="Configure connection"
-    >
-      <button
-        class="sky-btn sky-btn-primary"
-        type="button"
-      >
+    <sky-progress-indicator-item title="Configure connection">
+      <button class="sky-btn sky-btn-primary" type="button">
         Edit connection
       </button>
     </sky-progress-indicator-item>
 
-    <sky-progress-indicator-item
-      title="Select remote server"
-    >
-      <button
-        class="sky-btn sky-btn-primary"
-        type="button"
-      >
+    <sky-progress-indicator-item title="Select remote server">
+      <button class="sky-btn sky-btn-primary" type="button">
         Change server
       </button>
     </sky-progress-indicator-item>
 
-    <sky-progress-indicator-item
-      title="Test connection"
-    >
-      <button
-        class="sky-btn sky-btn-primary"
-        type="button"
-      >
+    <sky-progress-indicator-item title="Test connection">
+      <button class="sky-btn sky-btn-primary" type="button">
         Test connection
       </button>
     </sky-progress-indicator-item>
 
-    <sky-progress-indicator-item
-      title="Turn on connection"
-    >
+    <sky-progress-indicator-item title="Turn on connection">
       Content 4
     </sky-progress-indicator-item>
 
@@ -64,16 +43,10 @@
     </sky-progress-indicator-nav-button>
   </sky-progress-indicator>
 
-  <h3>
-    Interact with the progress indicator programmatically
-  </h3>
+  <h3>Interact with the progress indicator programmatically</h3>
 
   <p>
-    <button
-      class="sky-btn"
-      type="button"
-      (click)="onPreviousClick()"
-    >
+    <button class="sky-btn" type="button" (click)="onPreviousClick()">
       Previous
     </button>
 
@@ -86,63 +59,49 @@
       Next
     </button>
 
-    <button
-      class="sky-btn"
-      type="button"
-      (click)="onGoToClick()"
-    >
+    <button class="sky-btn" type="button" (click)="onGoToClick()">
       Goto first
     </button>
   </p>
 </div>
 
-<h2>
-  Horizontal mode
-</h2>
+<h2>Horizontal mode</h2>
 
-<div
-  class="app-screenshot"
-  id="screenshot-progress-indicator-horizontal"
->
-  <sky-progress-indicator *ngIf="showElement"
+<div class="app-screenshot" id="screenshot-progress-indicator-horizontal">
+  <sky-progress-indicator
+    *ngIf="showElement"
     displayMode="horizontal"
     [messageStream]="messageStreamHorizontal"
     (progressChanges)="onProgressChanges($event)"
     #horizontalIndicator
   >
-    <sky-progress-indicator-item
-      title="Configure connection"
-    >
+    <sky-progress-indicator-item title="Configure connection">
       Content 1
     </sky-progress-indicator-item>
 
-    <sky-progress-indicator-item
-      title="Select remote server"
-    >
+    <sky-progress-indicator-item title="Select remote server">
       Content 2
     </sky-progress-indicator-item>
 
-    <sky-progress-indicator-item
-      title="Test connection"
-    >
+    <sky-progress-indicator-item title="Test connection">
       Content 3
     </sky-progress-indicator-item>
 
-    <sky-progress-indicator-item
-      title="Turn on connection"
-    >
+    <sky-progress-indicator-item title="Turn on connection">
       Content 4
     </sky-progress-indicator-item>
   </sky-progress-indicator>
 
-  <sky-progress-indicator-nav-button *ngIf="progressIndicator"
+  <sky-progress-indicator-nav-button
+    *ngIf="progressIndicator"
     buttonType="previous"
     [disabled]="disabled"
     [progressIndicator]="progressIndicator"
   >
   </sky-progress-indicator-nav-button>
 
-  <sky-progress-indicator-nav-button *ngIf="progressIndicator"
+  <sky-progress-indicator-nav-button
+    *ngIf="progressIndicator"
     buttonType="next"
     id="screenshot-progress-indicator-horizontal-next-button"
     [disabled]="disabled"
@@ -150,7 +109,8 @@
   >
   </sky-progress-indicator-nav-button>
 
-  <sky-progress-indicator-nav-button *ngIf="progressIndicator"
+  <sky-progress-indicator-nav-button
+    *ngIf="progressIndicator"
     buttonType="finish"
     [disabled]="disabled"
     [progressIndicator]="progressIndicator"
@@ -158,7 +118,8 @@
   >
   </sky-progress-indicator-nav-button>
 
-  <sky-progress-indicator-nav-button *ngIf="progressIndicator"
+  <sky-progress-indicator-nav-button
+    *ngIf="progressIndicator"
     buttonText="Start over"
     buttonType="reset"
     [disabled]="disabled"
@@ -176,46 +137,28 @@
   >
     Disable nav buttons
   </button>
-  <button
-    class="sky-btn sky-btn-primary"
-    (click)="toggleProgressIndicator()"
-  >
+  <button class="sky-btn sky-btn-primary" (click)="toggleProgressIndicator()">
     Toggle indicator
   </button>
 </p>
 
-<h2>
-  Horizontal mode (no finish button)
-</h2>
+<h2>Horizontal mode (no finish button)</h2>
 
-<div
-  class="app-screenshot"
->
-  <sky-progress-indicator
-    displayMode="horizontal"
-    #horizontalIndicatorNoFinish
-  >
-    <sky-progress-indicator-item
-      title="Configure connection"
-    >
+<div class="app-screenshot">
+  <sky-progress-indicator displayMode="horizontal" #horizontalIndicatorNoFinish>
+    <sky-progress-indicator-item title="Configure connection">
       Content 1
     </sky-progress-indicator-item>
 
-    <sky-progress-indicator-item
-      title="Select remote server"
-    >
+    <sky-progress-indicator-item title="Select remote server">
       Content 2
     </sky-progress-indicator-item>
 
-    <sky-progress-indicator-item
-      title="Test connection"
-    >
+    <sky-progress-indicator-item title="Test connection">
       Content 3
     </sky-progress-indicator-item>
 
-    <sky-progress-indicator-item
-      title="Turn on connection"
-    >
+    <sky-progress-indicator-item title="Turn on connection">
       Content 4
     </sky-progress-indicator-item>
   </sky-progress-indicator>
@@ -233,9 +176,7 @@
   </sky-progress-indicator-nav-button>
 </div>
 
-<h2>
-  Horizontal mode (modal)
-</h2>
+<h2>Horizontal mode (modal)</h2>
 
 <p>
   <button
@@ -248,41 +189,25 @@
   </button>
 </p>
 
-<h2>
-  Passive mode
-</h2>
+<h2>Passive mode</h2>
 
-<div
-  class="app-screenshot"
->
+<div class="app-screenshot">
   <sky-progress-indicator
     id="screenshot-progress-indicator-passive"
     [isPassive]="true"
     [startingIndex]="1"
   >
-    <sky-progress-indicator-item
-      title="Received (02-19-2003)"
-    >
+    <sky-progress-indicator-item title="Received (02-19-2003)">
     </sky-progress-indicator-item>
-    <sky-progress-indicator-item
-      title="Awaiting approval"
-    >
+    <sky-progress-indicator-item title="Awaiting approval">
     </sky-progress-indicator-item>
-    <sky-progress-indicator-item
-      title="Finish"
-    >
-    </sky-progress-indicator-item>
+    <sky-progress-indicator-item title="Finish"> </sky-progress-indicator-item>
   </sky-progress-indicator>
 </div>
 
-<h2>
-  Passive mode (in popover)
-</h2>
+<h2>Passive mode (in popover)</h2>
 
-<div
-  class="app-screenshot"
-  id="screenshot-progress-indicator-passive-popover"
->
+<div class="app-screenshot" id="screenshot-progress-indicator-passive-popover">
   <button
     class="sky-btn sky-btn-link"
     id="screenshot-progress-indicator-passive-popover-button"
@@ -297,32 +222,18 @@
     id="screenshot-progress-indicator-passive-popover-target"
     #myPopover
   >
-    <sky-progress-indicator
-      [isPassive]="true"
-      [startingIndex]="1"
-    >
-      <sky-progress-indicator-item
-        title="Received (02-19-2003)"
-      >
+    <sky-progress-indicator [isPassive]="true" [startingIndex]="1">
+      <sky-progress-indicator-item title="Received (02-19-2003)">
       </sky-progress-indicator-item>
-      <sky-progress-indicator-item
-        title="Awaiting approval"
-      >
+      <sky-progress-indicator-item title="Awaiting approval">
       </sky-progress-indicator-item>
-      <sky-progress-indicator-item
-        title=""
-      >
-      </sky-progress-indicator-item>
+      <sky-progress-indicator-item title=""> </sky-progress-indicator-item>
     </sky-progress-indicator>
   </sky-popover>
 </div>
 
-<h2>
-  Legacy components
-</h2>
+<h2>Legacy components</h2>
 
-<sky-progress-indicator-reset-button
-  [progressIndicator]="verticalIndicator"
->
+<sky-progress-indicator-reset-button [progressIndicator]="verticalIndicator">
   Old reset button
 </sky-progress-indicator-reset-button>

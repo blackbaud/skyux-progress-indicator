@@ -1,20 +1,10 @@
-import {
-  SkyHostBrowserBreakpoint
-} from '@skyux-sdk/e2e/host-browser/host-browser-breakpoint';
+import { SkyHostBrowserBreakpoint } from '@skyux-sdk/e2e/host-browser/host-browser-breakpoint';
 
-import {
-  expect,
-  SkyHostBrowser,
-  SkyVisualThemeSelector
-} from '@skyux-sdk/e2e';
+import { expect, SkyHostBrowser, SkyVisualThemeSelector } from '@skyux-sdk/e2e';
 
-import {
-  by,
-  element
-} from 'protractor';
+import { by, element } from 'protractor';
 
 describe('Progress indicator', () => {
-
   //#region helpers
   let browserSize: SkyHostBrowserBreakpoint;
   let currentTheme: string;
@@ -58,13 +48,18 @@ describe('Progress indicator', () => {
   function runTests(): void {
     describe('Vertical display', () => {
       it('should match previous screenshot', async (done) => {
-        await SkyHostBrowser.scrollTo('#screenshot-progress-indicator-vertical');
-        await performClick('#screenshot-progress-indicator-vertical-next-button');
+        await SkyHostBrowser.scrollTo(
+          '#screenshot-progress-indicator-vertical'
+        );
+        await performClick(
+          '#screenshot-progress-indicator-vertical-next-button'
+        );
         await SkyHostBrowser.moveCursorOffScreen();
-        expect('#screenshot-progress-indicator-vertical')
-          .toMatchBaselineScreenshot(done, {
-            screenshotName: getScreenshotName('progress-indicator-vertical')
-          });
+        expect(
+          '#screenshot-progress-indicator-vertical'
+        ).toMatchBaselineScreenshot(done, {
+          screenshotName: getScreenshotName('progress-indicator-vertical'),
+        });
       });
     });
 
@@ -72,55 +67,76 @@ describe('Progress indicator', () => {
     if (currentTheme === 'default') {
       describe('Horizontal display', () => {
         it('should match previous screenshot', async (done) => {
-          await SkyHostBrowser.scrollTo('#screenshot-progress-indicator-horizontal');
-          await performClick('#screenshot-progress-indicator-horizontal-next-button button');
+          await SkyHostBrowser.scrollTo(
+            '#screenshot-progress-indicator-horizontal'
+          );
+          await performClick(
+            '#screenshot-progress-indicator-horizontal-next-button button'
+          );
           await SkyHostBrowser.moveCursorOffScreen();
-          expect('#screenshot-progress-indicator-horizontal')
-            .toMatchBaselineScreenshot(done, {
-              screenshotName: getScreenshotName('progress-indicator-horizontal')
-            });
+          expect(
+            '#screenshot-progress-indicator-horizontal'
+          ).toMatchBaselineScreenshot(done, {
+            screenshotName: getScreenshotName('progress-indicator-horizontal'),
+          });
         });
 
         it('should match disabled buttons previous screenshot', async (done) => {
-          await SkyHostBrowser.scrollTo('#screenshot-progress-indicator-horizontal');
-          await performClick('#screenshot-progress-indicator-horizontal-next-button button');
-          await performClick('#screenshot-progress-indicator-horizontal-disable-button');
+          await SkyHostBrowser.scrollTo(
+            '#screenshot-progress-indicator-horizontal'
+          );
+          await performClick(
+            '#screenshot-progress-indicator-horizontal-next-button button'
+          );
+          await performClick(
+            '#screenshot-progress-indicator-horizontal-disable-button'
+          );
           await SkyHostBrowser.moveCursorOffScreen();
-          expect('#screenshot-progress-indicator-horizontal')
-            .toMatchBaselineScreenshot(done, {
-              screenshotName: getScreenshotName('progress-indicator-horizontal-disabled')
-            });
+          expect(
+            '#screenshot-progress-indicator-horizontal'
+          ).toMatchBaselineScreenshot(done, {
+            screenshotName: getScreenshotName(
+              'progress-indicator-horizontal-disabled'
+            ),
+          });
         });
       });
 
       describe('Passive mode', () => {
         it('should match previous screenshot', async (done) => {
-          await SkyHostBrowser.scrollTo('#screenshot-progress-indicator-passive');
+          await SkyHostBrowser.scrollTo(
+            '#screenshot-progress-indicator-passive'
+          );
           await SkyHostBrowser.moveCursorOffScreen();
-          expect('#screenshot-progress-indicator-passive')
-            .toMatchBaselineScreenshot(done, {
-              screenshotName: getScreenshotName('progress-indicator-passive')
-            });
+          expect(
+            '#screenshot-progress-indicator-passive'
+          ).toMatchBaselineScreenshot(done, {
+            screenshotName: getScreenshotName('progress-indicator-passive'),
+          });
         });
 
         it('popver should match previous screenshot', async (done) => {
-          await SkyHostBrowser.scrollTo('#screenshot-progress-indicator-passive-popover');
-          await performClick('#screenshot-progress-indicator-passive-popover-button');
+          await SkyHostBrowser.scrollTo(
+            '#screenshot-progress-indicator-passive-popover'
+          );
+          await performClick(
+            '#screenshot-progress-indicator-passive-popover-button'
+          );
           await SkyHostBrowser.moveCursorOffScreen();
-          expect('.sky-popover')
-            .toMatchBaselineScreenshot(done, {
-              screenshotName: getScreenshotName('progress-indicator-passive-popover')
-            });
+          expect('.sky-popover').toMatchBaselineScreenshot(done, {
+            screenshotName: getScreenshotName(
+              'progress-indicator-passive-popover'
+            ),
+          });
         });
 
         describe('Horizontal mode (modal)', () => {
           it('should match previous screenshot', async (done) => {
             await performClick('#screenshot-open-modal-button');
             await performClick('#screenshot-modal-next-button');
-            expect('.sky-modal')
-              .toMatchBaselineScreenshot(done, {
-                screenshotName: getScreenshotName('progress-indicator-modal')
-              });
+            expect('.sky-modal').toMatchBaselineScreenshot(done, {
+              screenshotName: getScreenshotName('progress-indicator-modal'),
+            });
           });
         });
       });
@@ -129,7 +145,7 @@ describe('Progress indicator', () => {
   //#endregion
 
   describe('(size: lg)', () => {
-    beforeEach( async() => {
+    beforeEach(async () => {
       currentTheme = undefined;
       currentThemeMode = undefined;
       await SkyHostBrowser.get('visual/progress-indicator');
@@ -156,7 +172,7 @@ describe('Progress indicator', () => {
   });
 
   describe('(size: xs)', () => {
-    beforeEach( async() => {
+    beforeEach(async () => {
       currentTheme = undefined;
       currentThemeMode = undefined;
       await SkyHostBrowser.get('visual/progress-indicator');
