@@ -18,7 +18,7 @@ import { VisualComponent } from './visual.component';
   declarations: [
     ProgressIndicatorVisualComponent,
     ProgressIndicatorWizardVisualComponent,
-    VisualComponent
+    VisualComponent,
   ],
   imports: [
     NoopAnimationsModule,
@@ -26,7 +26,7 @@ import { VisualComponent } from './visual.component';
     SkyE2eThemeSelectorModule,
     SkyModalModule,
     SkyPopoverModule,
-    SkyProgressIndicatorModule
-  ]
+    SkyProgressIndicatorModule,
+  ],
 })
-export class VisualModule { }
+export class VisualModule {}

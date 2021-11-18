@@ -2,38 +2,29 @@ import {
   ChangeDetectorRef,
   Component,
   OnDestroy,
-  ViewChild
+  ViewChild,
 } from '@angular/core';
 
-import {
-  SkyModalService
-} from '@skyux/modals';
+import { SkyModalService } from '@skyux/modals';
 
-import {
-  Subject
-} from 'rxjs';
+import { Subject } from 'rxjs';
 
-import {
-  SkyProgressIndicatorComponent
-} from 'projects/progress-indicator/src/modules/progress-indicator/progress-indicator.component';
+import { SkyProgressIndicatorComponent } from 'projects/progress-indicator/src/modules/progress-indicator/progress-indicator.component';
 
 import {
   SkyProgressIndicatorActionClickArgs,
   SkyProgressIndicatorChange,
   SkyProgressIndicatorMessage,
-  SkyProgressIndicatorMessageType
+  SkyProgressIndicatorMessageType,
 } from 'projects/progress-indicator/src/public-api';
 
-import {
-  ProgressIndicatorWizardVisualComponent
-} from './progress-indicator-horizontal-visual.component';
+import { ProgressIndicatorWizardVisualComponent } from './progress-indicator-horizontal-visual.component';
 
 @Component({
   selector: 'app-progress-indicator-visual',
-  templateUrl: './progress-indicator-visual.component.html'
+  templateUrl: './progress-indicator-visual.component.html',
 })
 export class ProgressIndicatorVisualComponent implements OnDestroy {
-
   @ViewChild('horizontalIndicator')
   public set progressIndicator(value: SkyProgressIndicatorComponent) {
     this._progressIndicator = value;
@@ -57,7 +48,7 @@ export class ProgressIndicatorVisualComponent implements OnDestroy {
   constructor(
     private modalService: SkyModalService,
     private changeDetector: ChangeDetectorRef
-  ) { }
+  ) {}
 
   public ngOnDestroy(): void {
     this.messageStream.complete();
@@ -66,13 +57,13 @@ export class ProgressIndicatorVisualComponent implements OnDestroy {
 
   public onPreviousClick(): void {
     this.sendMessage({
-      type: SkyProgressIndicatorMessageType.Regress
+      type: SkyProgressIndicatorMessageType.Regress,
     });
   }
 
   public onNextClick(): void {
     this.sendMessage({
-      type: SkyProgressIndicatorMessageType.Progress
+      type: SkyProgressIndicatorMessageType.Progress,
     });
   }
 
@@ -80,8 +71,8 @@ export class ProgressIndicatorVisualComponent implements OnDestroy {
     this.sendMessage({
       type: SkyProgressIndicatorMessageType.GoTo,
       data: {
-        activeIndex: 0
-      }
+        activeIndex: 0,
+      },
     });
   }
 
