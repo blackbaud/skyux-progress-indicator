@@ -238,7 +238,6 @@ export class SkyProgressIndicatorNavButtonComponent implements AfterViewInit, On
 
   public onClick(event: MouseEvent): void {
     event.preventDefault();
-    event.stopPropagation();
 
     let type: SkyProgressIndicatorMessageType;
 
