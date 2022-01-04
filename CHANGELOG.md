@@ -1,3 +1,7 @@
+# 4.1.1 (2022-01-04)
+
+- Added bug fixes and features from the `master` branch. [#81](https://github.com/blackbaud/skyux-progress-indicator/pull/81)
+
 # 4.1.0 (2021-04-21)
 
 - Added modern theme styles to the progress indicator component. [#66](https://github.com/blackbaud/skyux-progress-indicator/pull/66)
