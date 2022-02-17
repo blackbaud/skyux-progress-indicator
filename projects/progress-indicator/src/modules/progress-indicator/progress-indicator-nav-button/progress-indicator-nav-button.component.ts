@@ -40,7 +40,7 @@ export class SkyProgressIndicatorNavButtonComponent
 {
   /**
    * Specifies the label to display on the nav button.
-   * @default 'Next'
+   * @default "Next"
    */
   @Input()
   public buttonText: string;
@@ -48,7 +48,7 @@ export class SkyProgressIndicatorNavButtonComponent
   /**
    * Specifies the type of nav button to include.
    * The valid options are `finish`, `next`, `previous`, and `reset`.
-   * @default next
+   * @default "next"
    */
   @Input()
   public set buttonType(value: SkyProgressIndicatorNavButtonType) {
